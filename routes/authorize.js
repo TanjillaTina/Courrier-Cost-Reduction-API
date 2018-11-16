@@ -42,12 +42,13 @@ router.get('/', async function(req, res, next) {
       let token;
   
       try {
-        token = await authHelper.getTokenFromCode(code);
+        token = await authHelper.getTokenFromCode(code,res);
       } catch (error) {
         res.render('error', { title: 'Error', message: 'Error exchanging code for token', error: error });
       }
   
-      res.render('users', { title: 'Home', debug: `Access token: ${token}` });
+      //res.render('users', { title: 'Home', debug: `Access token: ${token}` });
+      res.redirect('/users');
     } else {
       // Otherwise complain
       res.render('error', { title: 'Error', message: 'Authorization error', error: { status: 'Missing code parameter' } });
@@ -55,3 +56,5 @@ router.get('/', async function(req, res, next) {
   });
 
   module.exports = router;
+
+
