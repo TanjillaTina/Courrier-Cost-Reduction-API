@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 */
 
 
-router.get('/',usersController.usersPage);
+router.get('/',usersController.authCheck,usersController.usersPage);
 
 
 module.exports = router;

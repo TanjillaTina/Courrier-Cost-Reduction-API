@@ -16,18 +16,38 @@ var usersPage= async function(req, res, next) {
     if (accessToken && userName) {
       parms.user = userName;
       parms.debug = `User: ${userName}\nAccess Token: ${accessToken}`;
+      res.render('users', parms);
     } else {
       parms.signInUrl = authHelper.getAuthUrl();
       parms.debug = parms.signInUrl;
+      res.render('index',parms);
     }
   
-    res.render('users', parms);
+   
   };
 
+  var authCheck=async (req,res,next)=>{
+    const mykey = await authHelper.getAccessToken(req.cookies, res);
+    let parms = { title: 'Welcome To Profile'};
+    if(!mykey){
+        parms.signInUrl = authHelper.getAuthUrl();
+        parms.debug = parms.signInUrl;
+        res.render('index',parms);
+      //if user isn't logged in 
+      res.redirect('/');
+ 
+    }
+    else{
+      //if logged in
+     next();
+    }
+ };
 
 
 
-  
+
+
   module.exports={
-      usersPage
+      usersPage,
+      authCheck
   }
