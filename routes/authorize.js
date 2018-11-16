@@ -28,11 +28,6 @@ module.exports = router;
 */
 
 
-
-
-
-
-
 router.get('/', async function(req, res, next) {
     // Get auth code
     const code = req.query.code;
@@ -57,4 +52,12 @@ router.get('/', async function(req, res, next) {
 
   module.exports = router;
 
+
+  /* GET /authorize/signout */
+router.get('/signout', function(req, res, next) {
+    authHelper.clearCookies(res);
+  
+    // Redirect to home
+    res.redirect('/');
+  });
 

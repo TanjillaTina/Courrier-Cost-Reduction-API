@@ -13,7 +13,9 @@ router.get('/', function(req, res, next) {
 router.get('/', function(req, res, next) {
   let parms = { title: 'Welcome To Profile'};
 
-  const accessToken = req.cookies.graph_access_token;
+  //const accessToken = req.cookies.graph_access_token;
+  //const accessToken = await authHelper.getAccessToken(req.cookies, res);
+  const accessToken = authHelper.getAccessToken(req.cookies, res);
   const userName = req.cookies.graph_user_name;
 
   if (accessToken && userName) {
