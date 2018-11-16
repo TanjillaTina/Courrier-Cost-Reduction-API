@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var authHelper = require('../helpers/auth');
+var authorizeController=require('../controllers/authorize');
 
 
 /*
@@ -28,36 +28,11 @@ module.exports = router;
 */
 
 
-router.get('/', async function(req, res, next) {
-    // Get auth code
-    const code = req.query.code;
-  
-    // If code is present, use it
-    if (code) {
-      let token;
-  
-      try {
-        token = await authHelper.getTokenFromCode(code,res);
-      } catch (error) {
-        res.render('error', { title: 'Error', message: 'Error exchanging code for token', error: error });
-      }
-  
-      //res.render('users', { title: 'Home', debug: `Access token: ${token}` });
-      res.redirect('/users');
-    } else {
-      // Otherwise complain
-      res.render('error', { title: 'Error', message: 'Authorization error', error: { status: 'Missing code parameter' } });
-    }
-  });
-
-  module.exports = router;
+router.get('/',authorizeController.mainUthorizefun);
 
 
   /* GET /authorize/signout */
-router.get('/signout', function(req, res, next) {
-    authHelper.clearCookies(res);
-  
-    // Redirect to home
-    res.redirect('/');
-  });
+router.get('/signout',authorizeController.signOut);
+
+module.exports = router;
 
