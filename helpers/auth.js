@@ -19,5 +19,24 @@ const credentials = {
     console.log(`Generated auth url: ${returnVal}`);
     return returnVal;
   }
+
+
+
   
   exports.getAuthUrl = getAuthUrl;
+
+
+
+  async function getTokenFromCode(auth_code) {
+    let result = await oauth2.authorizationCode.getToken({
+      code: auth_code,
+      redirect_uri: process.env.REDIRECT_URI,
+      scope: process.env.APP_SCOPES
+    });
+  
+    const token = oauth2.accessToken.create(result);
+    console.log('Token created: ', token.token);
+    return token.token.access_token;
+  }
+  
+  exports.getTokenFromCode = getTokenFromCode;
