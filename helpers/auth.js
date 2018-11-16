@@ -19,9 +19,6 @@ const credentials = {
     console.log(`Generated auth url: ${returnVal}`);
     return returnVal;
   }
-
-
-
   
   exports.getAuthUrl = getAuthUrl;
 
@@ -39,4 +36,4 @@ const credentials = {
     return token.token.access_token;
   }
   
-  exports.getTokenFromCode = getTokenFromCode;
+  exports.getTokenFromCode = getTokenFromCode;  

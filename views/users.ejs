@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CourrierCostReduction</title>
+        <style>
+            body{
+                font-family: arial;
+                margin: 0;
+            }
+            nav{
+                background: #ff5353;
+                padding: 20px 10px;
+            }
+            nav ul{
+                max-width: 960px;
+                margin: 0 auto;
+                padding: 0;
+            }
+            nav li{
+                list-style-type: none;
+                display: inline-block;
+                margin: 0 10px 0 0;
+            }
+            nav a{
+                color: #fff;
+                font-size: 18px;
+                background: rgba(255,255,255,0.2);
+                text-decoration: none;
+                padding: 10px;
+                display: block;
+            }
+            main, header{
+                max-width: 960px;
+                margin: 30px auto;
+                padding: 0 10px;
+                color: #333;
+            }
+        </style>
+        
+    <!-- Bootstrap -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+   <link href="/css/jumbotron-narrow.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+              <ul class="nav nav-pills pull-right">
+                <li><a href="/">Logout</a></li>
+
+              
+                
+              </ul>
+              <h3 class="text-muted">Welcome User</h3>
+            </div>
+      
+            <div class="jumbotron" id="AddNew">
+              <h1>Login Using</h1>
+              <p class="lead"></p>
+              <p></p>
+            <div class="row">
+      
+      
+                <div class="col-md-12 col-xs-12 col-sm-0 col-lg-12 ">
+                  <div class="col-md-1 col-xs-2 col-sm-0 col-lg-2 "></div>
+                  <div class="col-md-10 col-xs-8 col-sm-8=12 col-lg-8">
+                 
+
+                         <!-- Debug output -->
+      <% if (debug) { %>                   
+    
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Debug</h5>
+          <pre class="bg-light border p-3"><code><%= debug %></code></pre>
+        </div>
+      </div>
+      <% } %>
+
+
+                  </div>
+                  <div class="col-md-1 col-xs-2 col-sm-0 col-lg-2"></div>
+      
+      
+              </div>
+            </div>
+      
+      
+          </div> <!-- /container -->
+        </div>
+    </body>
+</html>
