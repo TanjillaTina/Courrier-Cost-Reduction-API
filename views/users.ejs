@@ -4,96 +4,13 @@
         <meta charset="utf-8">
         <title>CourrierCostReduction</title>
         <style>
-            body{
-                font-family: arial;
-                margin: 0;
-            }
-            nav{
-                background: #ff5353;
-                padding: 20px 10px;
-            }
-            nav ul{
-                max-width: 960px;
-                margin: 0 auto;
-                padding: 0;
-                color:blue;
-            }
-            nav li{
-                list-style-type: none;
-                display: inline-block;
-                margin: 0 10px 0 0;
-            }
-            nav a{
-                color: #fff;
-                font-size: 18px;
-                background: rgba(255,255,255,0.2);
-                text-decoration: none;
-                padding: 10px;
-                display: block;
-            }
-            main, header{
-                max-width: 960px;
-                margin: 30px auto;
-                padding: 0 10px;
-                color: #333;
-            }
-      #loader {
-        transition: all 0.3s ease-in-out;
-        opacity: 1;
-        visibility: visible;
-        position: fixed;
-        height: 100vh;
-        width: 100%;
-        background: #fff;
-        z-index: 90000;
-      }
-
-      #loader.fadeOut {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      .spinner {
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        top: calc(50% - 20px);
-        left: calc(50% - 20px);
-        background-color: #333;
-        border-radius: 100%;
-        -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-        animation: sk-scaleout 1.0s infinite ease-in-out;
-      }
-
-      @-webkit-keyframes sk-scaleout {
-        0% { -webkit-transform: scale(0) }
-        100% {
-          -webkit-transform: scale(1.0);
-          opacity: 0;
-        }
-      }
-
-      @keyframes sk-scaleout {
-        0% {
-          -webkit-transform: scale(0);
-          transform: scale(0);
-        } 100% {
-          -webkit-transform: scale(1.0);
-          transform: scale(1.0);
-          opacity: 0;
-        }
-      }
-    .JumboHeaderImg{
-        background-image: url("http://www.famouspizzaexpress.com/images/pizza35.jpg");
-        opacity: 0.8;
-    filter: alpha(opacity=80); /* For IE8 and earlier */
-    }
+            
         </style>
         
     <!-- Bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-   <link href="/css/jumbotron-narrow.css" rel="stylesheet">
+    <!-- Custom styles for this template 
+   <link href="/css/jumbotron-narrow.css" rel="stylesheet">-->
     </head>
     <body>
         <div class="container">
@@ -107,7 +24,7 @@
               <h3 class="text-muted">Welcome User <%= user %></h3>
             </div>
       
-            <div class="jumbotron JumboHeaderImg" id="AddNew">
+            <div>
               <h1><%= title %></h1>
               <p class="lead"></p>
               <p></p>
@@ -139,63 +56,77 @@
             </div>
 
 
-            <div class="row">
-                    <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="well well-sm">
-                                        <form class="form-horizontal" method="post">
-                                            <fieldset>
-                                                <legend class="text-center header">Contact us</legend>
-                        
-                                                <div class="form-group">
-                                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                                                    <div class="col-md-8">
-                                                        <input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                                                    <div class="col-md-8">
-                                                        <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">
-                                                    </div>
-                                                </div>
-                        
-                                                <div class="form-group">
-                                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                                                    <div class="col-md-8">
-                                                        <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
-                                                    </div>
-                                                </div>
-                        
-                                                <div class="form-group">
-                                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
-                                                    <div class="col-md-8">
-                                                        <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
-                                                    </div>
-                                                </div>
-                        
-                                                <div class="form-group">
-                                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
-                                                    <div class="col-md-8">
-                                                        <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7"></textarea>
-                                                    </div>
-                                                </div>
-                        
-                                                <div class="form-group">
-                                                    <div class="col-md-12 text-center">
-                                                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        
 
-            </div>
-      
+
+
+
+
+            <div class="jumbotron" id="Contact" >
+                <h1>My Contact Information</h1>
+                  <br></br>
+               <div class="container-fluid bg-5 text-center">
+             <h3 class="cls3"><b>Send me mail </b></h3>
+             <div class="row">
+                 <div class="col-sm-5" style="text-align: left; font-size: 16px;">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="name" name="name" placeholder="Insert your name" type="text" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="email" name="mailid" placeholder="Insert your mail id" type="email" required>
+                        </div>
+                    </div>
+                    <textarea class="form-control" id="mail body" name="mailbody" placeholder="Write your mail here" rows="5"></textarea><br>
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <button class="btn btn-primary" type="submit">Send</button>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="col-sm-7 slideanim">
+                     <div class="row">
+                         <div class="col-sm-6 form-group">
+                             <input class="form-control" id="name" name="name" placeholder="Insert your name" type="text" required>
+                         </div>
+                         <div class="col-sm-6 form-group">
+                             <input class="form-control" id="email" name="mailid" placeholder="Insert your mail id" type="email" required>
+                         </div>
+                     </div>
+                     <textarea class="form-control" id="mail body" name="mailbody" placeholder="Write your mail here" rows="5"></textarea><br>
+                     <div class="row">
+                         <div class="col-sm-12 form-group">
+                             <button class="btn btn-primary" type="submit">Send</button>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       
           </div> <!-- /container -->
         </div>

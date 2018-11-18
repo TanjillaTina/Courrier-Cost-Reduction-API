@@ -23,7 +23,7 @@ const credentials = {
     return returnVal;
   }
   
-  exports.getAuthUrl = getAuthUrl;
+  //exports.getAuthUrl = getAuthUrl;
 
 /*
 
@@ -59,13 +59,13 @@ const credentials = {
   });
 
   const token = oauth2.accessToken.create(result);
-  console.log('Token created: ', token.token);
+  //console.log('Token created: ', token.token);
 
   saveValuesToCookie(token, res);
 
   return token.token.access_token;
 }
-  exports.getTokenFromCode = getTokenFromCode;  
+ // exports.getTokenFromCode = getTokenFromCode;  
 
 
   
@@ -94,7 +94,7 @@ const credentials = {
     res.clearCookie('graph_token_expires', {maxAge: 3600000, httpOnly: true});
   }
   
-  exports.clearCookies = clearCookies;
+  //exports.clearCookies = clearCookies;
 
 
   async function getAccessToken(cookies, res) {
@@ -125,5 +125,17 @@ const credentials = {
     return null;
   }
   
-  exports.getAccessToken = getAccessToken;
+  //exports.getAccessToken = getAccessToken;
   //exports.saveValuesToCookie = saveValuesToCookie;  
+
+  module.exports={
+    oauth2,
+    getAuthUrl,
+    getTokenFromCode,
+    clearCookies,
+    getAccessToken
+
+
+
+
+  }

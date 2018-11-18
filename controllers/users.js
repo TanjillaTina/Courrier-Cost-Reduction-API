@@ -3,7 +3,7 @@ var express = require('express');
 var authHelper = require('../helpers/auth');
 
 
-
+var myAuxFuns = require('../extraFunctions/myAuxFuns');
 
 var usersPage= async function(req, res, next) {
     let parms = { title: 'Welcome To Profile'};
@@ -12,9 +12,16 @@ var usersPage= async function(req, res, next) {
     const accessToken = await authHelper.getAccessToken(req.cookies, res);
     // const accessToken = authHelper.getAccessToken(req.cookies, res);
     const userName = req.cookies.graph_user_name;
-  
+     // RegFuns.getUsername(userName);
+     
+//console.log('Printing The tupe os ',typeof(userName));
     if (accessToken && userName) {
+
       parms.user = userName;
+      var userDetailArray=myAuxFuns.getUserDetail(userName);
+     console.log("Username is now",userDetailArray[0]);
+
+
       parms.debug = `User: ${userName}\nAccess Token: ${accessToken}`;
       res.render('users', parms);
     } else {
