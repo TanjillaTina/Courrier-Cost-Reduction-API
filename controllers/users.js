@@ -1,9 +1,8 @@
 var express = require('express');
-
 var authHelper = require('../helpers/auth');
-
-
 var myAuxFuns = require('../extraFunctions/myAuxFuns');
+const User=require('../models/user-model');
+
 
 var usersPage= async function(req, res, next) {
     let parms = { title: 'Welcome To Profile'};
@@ -19,11 +18,14 @@ var usersPage= async function(req, res, next) {
 
       parms.user = userName;
       var userDetailArray=myAuxFuns.getUserDetail(userName);
-     console.log("Username is now",userDetailArray[0]);
+     //console.log("Username is now",userDetailArray[0]);
 
 
       parms.debug = `User: ${userName}\nAccess Token: ${accessToken}`;
       res.render('users', parms);
+    
+      /////////check if user exixsts in db, then find it's requests and show, otherwise add the user to db list
+
     } else {
       parms.signInUrl = authHelper.getAuthUrl();
       parms.debug = parms.signInUrl;
@@ -32,6 +34,10 @@ var usersPage= async function(req, res, next) {
   
    
   };
+
+
+
+
 
   var authCheck=async (req,res,next)=>{
     const mykey = await authHelper.getAccessToken(req.cookies, res);

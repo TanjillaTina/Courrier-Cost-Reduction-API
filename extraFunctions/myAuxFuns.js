@@ -1,7 +1,7 @@
 
 
 var getUserDetail=function(user){
-console.log("Printing Username",user);
+//console.log("Printing Username",user);
 
 var det=[];
 var i=0;
@@ -43,9 +43,10 @@ while(user[i]!=',' &&  i<user.length)
     //console.log("Printing comname from here ",comname,"Index is ",i);
 
 det.push(userNamee);
+det.push(comname);
 det.push(designation);
 det.push(dept);
-det.push(comname);
+
 
 //console.log("Printing det ",det);
 return det;
