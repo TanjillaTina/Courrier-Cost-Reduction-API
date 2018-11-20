@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>CourrierCostReduction</title>
         <style>
             
@@ -9,128 +11,222 @@
         
     <!-- Bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/user.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
     <!-- Custom styles for this template 
    <link href="/css/jumbotron-narrow.css" rel="stylesheet">-->
+  
     </head>
     <body>
-        <div class="container">
-            <div class="header">
-              <ul class="nav nav-pills pull-right" >
-                <li><a href="/authorize/signout">Logout</a></li>
-
-              
-                
-              </ul>
-              <h3 class="text-muted">Welcome User <%= user %></h3>
-            </div>
-      
-            <div>
-              <h1><%= title %></h1>
-              <p class="lead"></p>
-              <p></p>
-            <div class="row">
-      
-      
-                <div class="col-md-12 col-xs-12 col-sm-0 col-lg-12 ">
-                  <div class="col-md-1 col-xs-2 col-sm-0 col-lg-2 "></div>
-                  <div class="col-md-10 col-xs-8 col-sm-8=12 col-lg-8">
-                 
-
-                         <!-- Debug output -->
-      <% if (debug) { %>                   
-    
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Debug</h5>
-          <pre class="bg-light border p-3"><code><%= debug %></code></pre>
-        </div>
-      </div>
-      <% } %>
-
-
+          
+                  <!-- Home div ends here -->
+                  
+                  <!-- Fixed Top Menu div starts here -->
+                  <body class="backimmg">
+                  
+                  
+                  <div class="container-fluid fixed-top " style="background-color: white;">
+                  <nav class="navbar navbar-toggleable-md navbar-light bg-faded" >
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbrText" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href=""><h1>CourrierCostReduction</h1></a>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="#PerInfo"><h5>InBound</h5><span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#Education"><h5>OutBound</h5></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/authorize/signout"><h5>LogOut</h5></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </nav>
                   </div>
-                  <div class="col-md-1 col-xs-2 col-sm-0 col-lg-2"></div>
-      
-      
-              </div>
-            </div>
-
-
-        
-
-
-
-
-
+                  <!-- Fixed Top Menu div ends here -->
+                 
+                 <br><br><br>
+                 
             <div class="jumbotron" id="Contact" >
-                <h1>Please fill the form carefully</h1>
-                  <br></br>
-               <div class="container-fluid bg-5 text-center">
-             <h3 class="cls3"><b>Send me mail </b></h3>
-             <div class="row">
-                 <div class="col-sm-5" style="text-align: left; font-size: 16px;">
-                    <div class="row">
-                        <div class="col-sm-6 form-group">
-                            <input class="form-control" id="name" name="name" placeholder="Insert your name" type="text" required>
-                        </div>
-                        <div class="col-sm-6 form-group">
-                            <input class="form-control" id="email" name="mailid" placeholder="Insert your mail id" type="email" required>
-                        </div>
-                    </div>
-                    <textarea class="form-control" id="mail body" name="mailbody" placeholder="Write your mail here" rows="5"></textarea><br>
-                    <div class="row">
-                        <div class="col-sm-12 form-group">
-                            <button class="btn btn-primary" type="submit">Send</button>
-                        </div>
-                    </div>
-                 </div>
-                 <div class="col-sm-7 slideanim">
-                     <div class="row">
-                         <div class="col-sm-6 form-group">
-                             <input class="form-control" id="name" name="name" placeholder="Insert your name" type="text" required>
+
+                    <div class="container">
+           <form>
+                            <div class="row">
+                                    <div class="col-12">
+                                          <div class="card">
+                                                  <div class="card-header">
+                                                    Request Form
+                                                  </div>
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Special title treatment</h5>
+                                                    
+                                                            <div class="form-row">
+                                                              <div class="form-group col-md-4">
+                                                                <label for="Buyer">Buyer</label>
+                                                                <input type="text" class="form-control" id="Buyer" placeholder="Buyer">
+                                                              </div>
+                                                              <div class="form-group col-md-4">
+                                                                <label for="OrderNo">Order Number</label>
+                                                                <input type="text" class="form-control" id="OrderNo" placeholder="Order Number">
+                                                              </div>
+                                                              <div class="form-group col-md-4">
+                                                                    <label for="Style">Style</label>
+                                                                    <input type="text" class="form-control" id="Style" placeholder="Style">
+                                                              </div>
+                                                            </div>
+                                                            
+                                                           
+                                                            <div class="form-row">
+                                                                    <div class="form-group col-md-4">
+                                                                      <label for="EWeight">Estimated Weight</label>
+                                                                      <input type="text" class="form-control" id="EWeight" placeholder="Estimated Weight">
+                                                                    </div>
+                                                                    <div class="form-group col-md-4">
+                                                                      <label for="Article">Article</label>
+                                                                      <input type="text" class="form-control" id="Article" placeholder="Article">
+                                                                    </div>
+                                                                    <div class="form-group col-md-4">
+                                                                            <label for="Item">Item</label>
+                                                                            <input type="text" class="form-control" id="Item" placeholder="Item">
+                                                                          </div>
+                                                            </div>
+
+                                                          
+                                                  </div>
+                                                </div>
+                                    </div>
+                                    
+                                   
+                               </div>
+
+
+
+
+
+
+
+
+                        <div class="row">
+                              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
+                                  
+                                    <div class="card">
+                                            <div class="card-header">
+                                              Shipper
+                                            </div>
+                                            <div class="card-body">
+                                          
+                                             
+                                                   
+                                                     <h5>Company Address</h5>
+                                                     <div class="form-group">
+                                                            <label for="CP">Contact Person</label>
+                                                            <input type="text" class="form-control" id="CP" placeholder="Contact Person">
+                                                          </div>
+                                                          <div class="form-group">
+                                                                <label for="ConNumber">Contact Number</label>
+                                                                <input type="text" class="form-control" id="ConNumber" placeholder="Contact Number">
+                                                              </div>
+                                                          <div class="form-group">
+                                                                <label for="ComName">Company Name</label>
+                                                                <input type="text" class="form-control" id="ComName" placeholder="Company Name">
+                                                              </div>
+                                                         <div class="form-group">
+                                                            <label for="ComAdd">Company Address</label>
+                                                            <input type="text" class="form-control" id="ComAdd" placeholder="Company Address">
+                                                          </div>
+                                                          <div class="form-row">
+                                                            <div class="form-group col-md-7">
+                                                              <label for="inputCity">City</label>
+                                                              <input type="text" class="form-control" id="inputCity">
+                                                            </div>
+                                                            <div class="form-group col-md-5">
+                                                              <label for="inputState">Country</label>
+                                                              <!--
+                                                              <select id="inputState" class="form-control">
+                                                                <option selected>Choose...</option>
+                                                                <option>...</option>
+                                                              </select>
+                                                            -->
+                                                          
+                                                              <input type="text" class="form-control" id="inputCity">
+
+                                                            </div>
+                                                           
+                                                          </div>
+                                                  
+                                            </div>
+                                          </div>
+                              </div>
+                              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
+                                    <div class="card">
+                                            <div class="card-header">
+                                              Cosignee
+                                            </div>
+                                            <div class="card-body">
+                                          
+                                              
+                                                   
+                                                     <h5>Name</h5>
+                                                     <div class="form-group">
+                                                            <label for="CosName">Name</label>
+                                                            <input type="text" class="form-control" id="CosName" placeholder="Name">
+                                                          </div>
+                                                          <div class="form-group">
+                                                                <label for="ConNumber">Contact Number</label>
+                                                                <input type="text" class="form-control" id="ConNumber" placeholder="Contact Number">
+                                                              </div>
+                                                         <div class="form-group">
+                                                            <label for="CosComAdd">Company Address</label>
+                                                            <input type="text" class="form-control" id="CosComAdd" placeholder="Company Address">
+                                                          </div>
+                                                          <div class="form-row">
+                                                            <div class="form-group col-md-7">
+                                                              <label for="inputCity">City</label>
+                                                              <input type="text" class="form-control" id="inputCity">
+                                                            </div>
+                                                            <div class="form-group col-md-5">
+                                                              <label for="inputState">Country</label>
+                                                              <!--
+                                                              <select id="inputState" class="form-control">
+                                                                <option selected>Choose...</option>
+                                                                <option>...</option>
+                                                              </select>
+                                                            -->
+                                                          
+                                                              <input type="text" class="form-control" id="inputCity">
+
+                                                            </div>
+                                                           
+                                                          </div>
+                                                
+                                            </div>
+                                            <button class="btn" type="submit">Submit form</button>
+                                          </div>
+
+                                          
+                              </div>
+                             
                          </div>
-                         <div class="col-sm-6 form-group">
-                             <input class="form-control" id="email" name="mailid" placeholder="Insert your mail id" type="email" required>
-                         </div>
-                     </div>
-                     <textarea class="form-control" id="mail body" name="mailbody" placeholder="Write your mail here" rows="5"></textarea><br>
-                     <div class="row">
-                         <div class="col-sm-12 form-group">
-                             <button class="btn btn-primary" type="submit">Send</button>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-       </div>
+
+                        </form>   
+           </div>
+          
+           
+
+           
+        
+    
+</div>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-          </div> <!-- /container -->
-        </div>
-
+                  
 
         
     </body>

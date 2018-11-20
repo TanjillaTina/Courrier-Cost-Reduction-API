@@ -19,12 +19,30 @@ var usersPage= async function(req, res, next) {
       parms.user = userName;
       var userDetailArray=myAuxFuns.getUserDetail(userName);
      //console.log("Username is now",userDetailArray[0]);
+ /////////check if user exixsts in db, then find it's requests and show, otherwise add the user to db list
 
+      
+
+
+
+
+
+
+
+
+
+
+
+ /////////////////////////////////////////////////////////////////////////////////////////////
 
       parms.debug = `User: ${userName}\nAccess Token: ${accessToken}`;
       res.render('users', parms);
     
-      /////////check if user exixsts in db, then find it's requests and show, otherwise add the user to db list
+     
+      
+
+
+      
 
     } else {
       parms.signInUrl = authHelper.getAuthUrl();
