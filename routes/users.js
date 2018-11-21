@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/',usersController.authCheck,usersController.usersPage);
-
+router.post('/addreq',usersController.authCheck,usersController.addReq);
 
 module.exports = router;
 

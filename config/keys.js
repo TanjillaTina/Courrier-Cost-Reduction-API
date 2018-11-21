@@ -4,7 +4,8 @@ module.exports={
 
 
     mongodb:{
-        dbURI:'mongodb://tina:tinadb1@ds219983.mlab.com:19983/google-passport-auth'
+        dbURI:'mongodb://tinadb2:tinadb2@ds041157.mlab.com:41157/courriercost'
+
 
 
     }

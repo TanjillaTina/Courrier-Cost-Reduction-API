@@ -20,10 +20,6 @@
     </head>
     <body>
           
-                  <!-- Home div ends here -->
-                  
-                  <!-- Fixed Top Menu div starts here -->
-                  <body class="backimmg">
                   
                   
                   <div class="container-fluid fixed-top " style="background-color: white;">
@@ -52,9 +48,11 @@
                  <br><br><br>
                  
             <div class="jumbotron" id="Contact" >
+<h2>Welcome <%= user %></h2>
 
                     <div class="container">
-           <form>
+           <form action="/users/addreq" method="POST">
+             
                             <div class="row">
                                     <div class="col-12">
                                           <div class="card">
@@ -66,32 +64,32 @@
                                                     
                                                             <div class="form-row">
                                                               <div class="form-group col-md-4">
-                                                                <label for="Buyer">Buyer</label>
-                                                                <input type="text" class="form-control" id="Buyer" placeholder="Buyer">
+                                                                <label for="buyer">Buyer</label>
+                                                                <input type="text" class="form-control" id="buyer" placeholder="Buyer">
                                                               </div>
                                                               <div class="form-group col-md-4">
-                                                                <label for="OrderNo">Order Number</label>
-                                                                <input type="text" class="form-control" id="OrderNo" placeholder="Order Number">
+                                                                <label for="orderNumber">Order Number</label>
+                                                                <input type="text" class="form-control" id="orderNumber" placeholder="Order Number">
                                                               </div>
                                                               <div class="form-group col-md-4">
-                                                                    <label for="Style">Style</label>
-                                                                    <input type="text" class="form-control" id="Style" placeholder="Style">
+                                                                    <label for="style">Style</label>
+                                                                    <input type="text" class="form-control" id="style" placeholder="Style">
                                                               </div>
                                                             </div>
                                                             
                                                            
                                                             <div class="form-row">
                                                                     <div class="form-group col-md-4">
-                                                                      <label for="EWeight">Estimated Weight</label>
-                                                                      <input type="text" class="form-control" id="EWeight" placeholder="Estimated Weight">
+                                                                      <label for="estemWeight">Estimated Weight</label>
+                                                                      <input type="text" class="form-control" id="estemWeight" placeholder="Estimated Weight">
                                                                     </div>
                                                                     <div class="form-group col-md-4">
-                                                                      <label for="Article">Article</label>
-                                                                      <input type="text" class="form-control" id="Article" placeholder="Article">
+                                                                      <label for="article">Article</label>
+                                                                      <input type="text" class="form-control" id="article" placeholder="Article">
                                                                     </div>
                                                                     <div class="form-group col-md-4">
-                                                                            <label for="Item">Item</label>
-                                                                            <input type="text" class="form-control" id="Item" placeholder="Item">
+                                                                            <label for="item">Item</label>
+                                                                            <input type="text" class="form-control" id="item" placeholder="Item">
                                                                           </div>
                                                             </div>
 
@@ -119,32 +117,29 @@
                                             </div>
                                             <div class="card-body">
                                           
-                                             
-                                                   
-                                                     <h5>Company Address</h5>
                                                      <div class="form-group">
-                                                            <label for="CP">Contact Person</label>
-                                                            <input type="text" class="form-control" id="CP" placeholder="Contact Person">
+                                                            <label for="cpname1">Contact Person</label>
+                                                            <input type="text" class="form-control" id="cpname1" placeholder="Contact Person">
                                                           </div>
                                                           <div class="form-group">
-                                                                <label for="ConNumber">Contact Number</label>
-                                                                <input type="text" class="form-control" id="ConNumber" placeholder="Contact Number">
+                                                                <label for="cpnum1">Contact Number</label>
+                                                                <input type="text" class="form-control" id="cpnum1" placeholder="Contact Number">
                                                               </div>
                                                           <div class="form-group">
-                                                                <label for="ComName">Company Name</label>
-                                                                <input type="text" class="form-control" id="ComName" placeholder="Company Name">
+                                                                <label for="comname1">Company Name</label>
+                                                                <input type="text" class="form-control" id="comname1" placeholder="Company Name">
                                                               </div>
                                                          <div class="form-group">
-                                                            <label for="ComAdd">Company Address</label>
-                                                            <input type="text" class="form-control" id="ComAdd" placeholder="Company Address">
+                                                            <label for="comadd1">Company Address</label>
+                                                            <input type="text" class="form-control" id="comadd1" placeholder="Company Address">
                                                           </div>
                                                           <div class="form-row">
                                                             <div class="form-group col-md-7">
-                                                              <label for="inputCity">City</label>
-                                                              <input type="text" class="form-control" id="inputCity">
+                                                              <label for="city1">City</label>
+                                                              <input type="text" class="form-control" id="city1"placeholder="City">
                                                             </div>
                                                             <div class="form-group col-md-5">
-                                                              <label for="inputState">Country</label>
+                                                              <label for="country1">Country</label>
                                                               <!--
                                                               <select id="inputState" class="form-control">
                                                                 <option selected>Choose...</option>
@@ -152,7 +147,7 @@
                                                               </select>
                                                             -->
                                                           
-                                                              <input type="text" class="form-control" id="inputCity">
+                                                              <input type="text" class="form-control" id="country1"placeholder="Country">
 
                                                             </div>
                                                            
@@ -168,28 +163,31 @@
                                             </div>
                                             <div class="card-body">
                                           
-                                              
-                                                   
-                                                     <h5>Name</h5>
+                                            
                                                      <div class="form-group">
-                                                            <label for="CosName">Name</label>
-                                                            <input type="text" class="form-control" id="CosName" placeholder="Name">
+                                                            <label for="cpname2">Name</label>
+                                                            <input type="text" class="form-control" id="cpname2" placeholder="Name">
                                                           </div>
                                                           <div class="form-group">
-                                                                <label for="ConNumber">Contact Number</label>
-                                                                <input type="text" class="form-control" id="ConNumber" placeholder="Contact Number">
+                                                                <label for="cpnum2">Contact Number</label>
+                                                                <input type="text" class="form-control" id="cpnum2" placeholder="Contact Number">
                                                               </div>
+
+                                                              <div class="form-group">
+                                                                  <label for="comname2">Company Name</label>
+                                                                  <input type="text" class="form-control" id="comname2" placeholder="Company Address">
+                                                                </div>
                                                          <div class="form-group">
-                                                            <label for="CosComAdd">Company Address</label>
-                                                            <input type="text" class="form-control" id="CosComAdd" placeholder="Company Address">
+                                                            <label for="comadd2">Company Address</label>
+                                                            <input type="text" class="form-control" id="comadd2" placeholder="Company Address">
                                                           </div>
                                                           <div class="form-row">
                                                             <div class="form-group col-md-7">
-                                                              <label for="inputCity">City</label>
-                                                              <input type="text" class="form-control" id="inputCity">
+                                                              <label for="city2">City</label>
+                                                              <input type="text" class="form-control" id="city2" placeholder="City">
                                                             </div>
                                                             <div class="form-group col-md-5">
-                                                              <label for="inputState">Country</label>
+                                                              <label for="country2">Country</label>
                                                               <!--
                                                               <select id="inputState" class="form-control">
                                                                 <option selected>Choose...</option>
@@ -197,14 +195,14 @@
                                                               </select>
                                                             -->
                                                           
-                                                              <input type="text" class="form-control" id="inputCity">
+                                                              <input type="text" class="form-control" id="country2"placeholder="Country">
 
                                                             </div>
                                                            
                                                           </div>
                                                 
                                             </div>
-                                            <button class="btn" type="submit">Submit form</button>
+                                            
                                           </div>
 
                                           
@@ -212,6 +210,23 @@
                              
                          </div>
 
+
+
+
+
+
+                         <div class="row">
+                            <div class="col-12">
+                                  <div class="card">
+                                         
+                                          <div class="card-body">
+                                              <button class="btn btn-large" type="submit">Submit form</button>
+                                         </div>
+                                        </div>
+                            </div>
+                            
+                           
+                       </div>
                         </form>   
            </div>
           

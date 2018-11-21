@@ -19,7 +19,7 @@ const credentials = {
       redirect_uri: process.env.REDIRECT_URI,
       scope: process.env.APP_SCOPES
     });
-    console.log(`Generated auth url: ${returnVal}`);
+   // console.log(`Generated auth url: ${returnVal}`);
     return returnVal;
   }
   
@@ -43,11 +43,12 @@ const credentials = {
  function saveValuesToCookie(token, res) {
   // Parse the identity token
   const user = jwt.decode(token.token.id_token);
-
+//console.log("Printing User From here ",user);
   // Save the access token in a cookie
   res.cookie('graph_access_token', token.token.access_token, {maxAge: 3600000, httpOnly: true});
   // Save the user's name in a cookie
   res.cookie('graph_user_name', user.name, {maxAge: 3600000, httpOnly: true});
+  
 }
 
 
@@ -80,6 +81,7 @@ const credentials = {
     res.cookie('graph_access_token', token.token.access_token, {maxAge: 3600000, httpOnly: true});
     // Save the user's name in a cookie
     res.cookie('graph_user_name', user.name, {maxAge: 3600000, httpOnly: true});
+    
     // Save the refresh token in a cookie
     res.cookie('graph_refresh_token', token.token.refresh_token, {maxAge: 7200000, httpOnly: true});
     // Save the token expiration time in a cookie

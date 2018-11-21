@@ -13,23 +13,47 @@ var usersPage= async function(req, res, next) {
     const userName = req.cookies.graph_user_name;
      // RegFuns.getUsername(userName);
      
+     
 //console.log('Printing The tupe os ',typeof(userName));
     if (accessToken && userName) {
 
       parms.user = userName;
+     // parms.userId = userId;
       var userDetailArray=myAuxFuns.getUserDetail(userName);
      //console.log("Username is now",userDetailArray[0]);
  /////////check if user exixsts in db, then find it's requests and show, otherwise add the user to db list
 
-      
+       //check if user already exists in our db
+       User.findOne({username:userDetailArray[0],comname:userDetailArray[1],dept:userDetailArray[3]}).then((currentUser)=>{
+        if(currentUser){
+           //already hv d user
+           //console.log('user is '+currentUser);
+           //serializing the user
+           done(null,currentUser);
+        }
+        else{
+            //if nt, create new user in db
+             
+             
+              new User({
+               
+                username:userDetailArray[0],
+                comname:userDetailArray[1],
+                dept:userDetailArray[3],
+                designation:userDetailArray[2]
+                
+              }).save().then((newUser=>{
+                  console.log('User Created '+newUser);
+                  //res.render('/');
 
+                  //again serializing
 
+                  done(null,newUser);
+              }));
+              
 
-
-
-
-
-
+          }
+    });
 
 
 
@@ -37,12 +61,7 @@ var usersPage= async function(req, res, next) {
 
       parms.debug = `User: ${userName}\nAccess Token: ${accessToken}`;
       res.render('users', parms);
-    
-     
-      
-
-
-      
+         
 
     } else {
       parms.signInUrl = authHelper.getAuthUrl();
@@ -76,9 +95,14 @@ var usersPage= async function(req, res, next) {
 
 
 
+ var addReq=async function(req, res, next){
+  
+ };
+
 
 
   module.exports={
       usersPage,
-      authCheck
+      authCheck,
+      addReq
   }
