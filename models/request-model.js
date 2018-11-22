@@ -26,6 +26,8 @@ let shiperOrshippingToSchema=new Schema({
 
 let requestSchema=new Schema({
     userId:{ type: String ,required:true},
+    reqDay:{ type: String ,required:true},
+    reqDate:{ type: String ,required:true},
     buyer:{type: String,required:false},
     orderNumber:{type: String,required:false},
     style:{type: String,required:false},
@@ -33,9 +35,7 @@ let requestSchema=new Schema({
     article:{type: String,required:false},
     item:{type: String,required:false},
     reqtype:{type: String,required:false},
-    done:{ type: Boolean ,default:false}, 
-   // urgent:{ type: Boolean ,default:false},
-    //creditdays:{type: Number,required:true},
+    done:{ type: Boolean ,default:false},
    shiperOrshippingTo:[shiperOrshippingToSchema],
    conignee:[conigneeSchema]
 
