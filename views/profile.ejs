@@ -1,217 +1,248 @@
 <!DOCTYPE html>
-<html lang="en">
-
-
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Home</title>
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
- <link href="/css/jumbotron-narrow.css" rel="stylesheet">
- 
-
-   
-    <!-- CSS (load bootstrap from a CDN) -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>  
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   
-    
-    </head>
-
- 
-
-  <body>
-
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-        
-        
-          <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src= "<%= user.profileImgLink %>" class="rounded-circle" alt="Logo" style="width:70px; height: 70px;" >
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#AddNew">AddNewTask</a>
-                  <a class="dropdown-item" href="#TasksToBeCompleted">Tasks To Be Completed</a>
-                  <a class="dropdown-item" href="#NotCompleted">Completed Tasks</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/auth/logout">Logout</a>
-                </div>
-              </li>
-          
-        </ul>
-        <h3 class="text-muted"> <%= user.username %></h3>
-
-
-
-
-
-
-
-        
-      </div>
-
-      <div class="jumbotron" id="AddNew">
-        
-        <h3>Welcome <%= user.username %> save your tasks here</h3>
-       
-        <p class="lead"></p>
-        <p></p>
-      <div class="row">
-
-        
-          <div class="col-md-12 col-xs-12 col-sm-0 col-lg-12 ">             
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="card">
-                      <div class="card-body">
-                          <div class="alert alert-success" role="alert">
-                        <h2 class="card-title">Add Task</h2>
-                        <form action="/profile/todos" method="POST">
-                        
-                          <div class="form-group">
-                              <input type="text" name="description" class="form-control" placeholder="Task Name">
-                          </div>
-
-                          
-                          
-                          <button type="submit" class="btn btn-primary">Add</button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-
-                  </div>
-
-
-          </div>
-
-          </div>
-      </div>
-
-
-
-<h1></h1><h1></h1><h1></h1>
-
-
-
-<div class="row" id="TasksToBeCompleted">
-
-
-  <div class="col-md-12 col-xs-12 col-sm-0 col-lg-12 ">             
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="card-title">Tasks To Be Completed </h2>
-      
-                  
-              <div class="list-group">                    
-                <% todos.forEach(function(todos) { %>
-                       <form action="" method="POST">
-                        <div class="alert alert-primary" role="alert">
-                        <div class="d-flex w-100 justify-content-between">
-                          <h2> Task Title: <%= todos.taskname %> </h2>
-                          
-
-                          <input type="hidden"  name="taskId" value=<%= todos.id %> >
-                          <input type="hidden"  name="task_name" value=<%= todos.name %> >
-                          <input type="hidden"  name="task_name" value=<%= todos.name %> >
-                          
-                          
-                        </div>
-
-                        <button type="submit" class="btn btn-secondary" formaction="/profile/todos/delete" >Delete This Task</button>
-                        <button type="submit" class="btn btn-info" formaction="/profile/todos/completed" >This Task is Done</button>
-                      </div>
-                      
-                        
-                    
-                      
-                    </form>
+<html>
+    <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>CourrierCostReduction</title>
+        <style>
             
-                      <% }); %>
-                  </div>
-                
-              </div>
-            </div>
-            </div>
-          </div>
-
-          </div>
-
-
-  </div>
-
-
-
-    <h1></h1><h1></h1><h1></h1>
-
-
-    
-    <div class="row" id="NotCompleted">
-
+        </style>
         
-  <div class="col-md-12 col-xs-12 col-sm-0 col-lg-12 ">             
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title">Completed Tasks </h2>
+    <!-- Bootstrap -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/user.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Custom styles for this template 
+   <link href="/css/jumbotron-narrow.css" rel="stylesheet">-->
   
-              
-          <div class="list-group">                    
-            <%Donetodos.forEach(function(Donetodos) { %>
-                   <form action="" method="POST">
-                    <div class="alert alert-primary" role="alert">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h2> Task Title: <%= Donetodos.taskname %> </h2>
-                      
-
-                      <input type="hidden"  name="taskId" value=<%= Donetodos.id %> >
-                      <input type="hidden"  name="task_name" value=<%= Donetodos.name %> >
+    </head>
+    <body>
+          
+                  
+                  
+                  <div class="container-fluid fixed-top " style="background-color: white;">
+                  <nav class="navbar navbar-toggleable-md navbar-light bg-faded" >
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbrText" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href=""><h1>CourrierCostReduction</h1></a>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="#PerInfo"><h5>InBound</h5><span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#Education"><h5>OutBound</h5></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/auth/logout"><h5>LogOut</h5></a>
+                        </li>
+                      </ul>
                     </div>
-
-                    <button type="submit" class="btn btn-secondary" formaction="/profile/todos/delete" >Delete This Task</button>
-                    <button type="submit" class="btn btn-danger" formaction="/profile/todos/completed" >Oopps!! Not Done</button>
+                  </nav>
                   </div>
-                  
-                    
-                
-                  
-                </form>
+                  <!-- Fixed Top Menu div ends here -->
+                 
+                 <br><br><br>
+                 
+            <div class="jumbotron" id="Contact" >
+<h2>Welcome <%= user %></h2>
+
+                    <div class="container">
+           <form action="/users/addreq" method="POST">
+             
+                            <div class="row">
+                                    <div class="col-12">
+                                          <div class="card">
+                                                  <div class="card-header">
+                                                    Request Form
+                                                  </div>
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">Special title treatment</h5>
+                                                    
+                                                            <div class="form-row">
+                                                              <div class="form-group col-md-4">
+                                                                <label for="buyer">Buyer</label>
+                                                                <input type="text" class="form-control" id="buyer" placeholder="Buyer">
+                                                              </div>
+                                                              <div class="form-group col-md-4">
+                                                                <label for="orderNumber">Order Number</label>
+                                                                <input type="text" class="form-control" id="orderNumber" placeholder="Order Number">
+                                                              </div>
+                                                              <div class="form-group col-md-4">
+                                                                    <label for="style">Style</label>
+                                                                    <input type="text" class="form-control" id="style" placeholder="Style">
+                                                              </div>
+                                                            </div>
+                                                            
+                                                           
+                                                            <div class="form-row">
+                                                                    <div class="form-group col-md-4">
+                                                                      <label for="estemWeight">Estimated Weight</label>
+                                                                      <input type="text" class="form-control" id="estemWeight" placeholder="Estimated Weight">
+                                                                    </div>
+                                                                    <div class="form-group col-md-4">
+                                                                      <label for="article">Article</label>
+                                                                      <input type="text" class="form-control" id="article" placeholder="Article">
+                                                                    </div>
+                                                                    <div class="form-group col-md-4">
+                                                                            <label for="item">Item</label>
+                                                                            <input type="text" class="form-control" id="item" placeholder="Item">
+                                                                          </div>
+                                                            </div>
+
+                                                          
+                                                  </div>
+                                                </div>
+                                    </div>
+                                    
+                                   
+                               </div>
+
+
+
+
+
+
+
+
+                        <div class="row">
+                              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
+                                  
+                                    <div class="card">
+                                            <div class="card-header">
+                                              Shipper
+                                            </div>
+                                            <div class="card-body">
+                                          
+                                                     <div class="form-group">
+                                                            <label for="cpname1">Contact Person</label>
+                                                            <input type="text" class="form-control" id="cpname1" placeholder="Contact Person">
+                                                          </div>
+                                                          <div class="form-group">
+                                                                <label for="cpnum1">Contact Number</label>
+                                                                <input type="text" class="form-control" id="cpnum1" placeholder="Contact Number">
+                                                              </div>
+                                                          <div class="form-group">
+                                                                <label for="comname1">Company Name</label>
+                                                                <input type="text" class="form-control" id="comname1" placeholder="Company Name">
+                                                              </div>
+                                                         <div class="form-group">
+                                                            <label for="comadd1">Company Address</label>
+                                                            <input type="text" class="form-control" id="comadd1" placeholder="Company Address">
+                                                          </div>
+                                                          <div class="form-row">
+                                                            <div class="form-group col-md-7">
+                                                              <label for="city1">City</label>
+                                                              <input type="text" class="form-control" id="city1"placeholder="City">
+                                                            </div>
+                                                            <div class="form-group col-md-5">
+                                                              <label for="country1">Country</label>
+                                                              <!--
+                                                              <select id="inputState" class="form-control">
+                                                                <option selected>Choose...</option>
+                                                                <option>...</option>
+                                                              </select>
+                                                            -->
+                                                          
+                                                              <input type="text" class="form-control" id="country1"placeholder="Country">
+
+                                                            </div>
+                                                           
+                                                          </div>
+                                                  
+                                            </div>
+                                          </div>
+                              </div>
+                              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
+                                    <div class="card">
+                                            <div class="card-header">
+                                              Cosignee
+                                            </div>
+                                            <div class="card-body">
+                                          
+                                            
+                                                     <div class="form-group">
+                                                            <label for="cpname2">Name</label>
+                                                            <input type="text" class="form-control" id="cpname2" placeholder="Name">
+                                                          </div>
+                                                          <div class="form-group">
+                                                                <label for="cpnum2">Contact Number</label>
+                                                                <input type="text" class="form-control" id="cpnum2" placeholder="Contact Number">
+                                                              </div>
+
+                                                              <div class="form-group">
+                                                                  <label for="comname2">Company Name</label>
+                                                                  <input type="text" class="form-control" id="comname2" placeholder="Company Address">
+                                                                </div>
+                                                         <div class="form-group">
+                                                            <label for="comadd2">Company Address</label>
+                                                            <input type="text" class="form-control" id="comadd2" placeholder="Company Address">
+                                                          </div>
+                                                          <div class="form-row">
+                                                            <div class="form-group col-md-7">
+                                                              <label for="city2">City</label>
+                                                              <input type="text" class="form-control" id="city2" placeholder="City">
+                                                            </div>
+                                                            <div class="form-group col-md-5">
+                                                              <label for="country2">Country</label>
+                                                              <!--
+                                                              <select id="inputState" class="form-control">
+                                                                <option selected>Choose...</option>
+                                                                <option>...</option>
+                                                              </select>
+                                                            -->
+                                                          
+                                                              <input type="text" class="form-control" id="country2"placeholder="Country">
+
+                                                            </div>
+                                                           
+                                                          </div>
+                                                
+                                            </div>
+                                            
+                                          </div>
+
+                                          
+                              </div>
+                             
+                         </div>
+
+
+
+
+
+
+                         <div class="row">
+                            <div class="col-12">
+                                  <div class="card">
+                                         
+                                          <div class="card-body">
+                                              <button class="btn btn-large" type="submit">Submit form</button>
+                                         </div>
+                                        </div>
+                            </div>
+                            
+                           
+                       </div>
+                        </form>   
+           </div>
+          
+           
+
+           
         
-                  <% }); %>
-              </div>
-            
-          </div>
-        </div>
-        </div>
-      </div>
-
-      </div>
     
+</div>
 
-      </div>
-  </div>
-      
 
-    </div> <!-- /container -->
 
-    <div class="footer">
-            <p>My Footer here</p>
-          </div>
-  </div>
-       
 
-  </body>
+
+                  
+
+        
+    </body>
 </html>

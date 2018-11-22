@@ -3,8 +3,9 @@
 module.exports={
 
     mongodb:{
-        dbURI:'mongodb://tina:tinadb1@ds037997.mlab.com:37997/passport-outlook-auth'
+        dbURI:'mongodb://tina:tina21@ds041157.mlab.com:41157/courriercost'
         //mongodb://<dbuser>:<dbpassword>@ds037997.mlab.com:37997/passport-outlook-auth
+        
     },
 
     session:{
