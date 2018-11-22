@@ -2,6 +2,7 @@ const passport=require('passport');
 const keys=require('./keys');
 const User=require('../models/user-model');
 const OutlookStrategy=require('passport-outlook');
+const ComFun=require('../extraFunctions/myAuxFuns');
 
 passport.serializeUser((user,done)=>{
     done(null,user.id);
@@ -36,6 +37,7 @@ passport.use(new OutlookStrategy({
                 outlookId: profile._json.Id,
                 name: profile._json.DisplayName,
                 email: profile._json.EmailAddress,
+                comname:ComFun.getUserDetail(profile._json.DisplayName)
                // accessToken:  accessToken
             };
             // if (refreshToken)
@@ -66,7 +68,7 @@ passport.use(new OutlookStrategy({
                           outlookId:user.outlookId,
                           username:user.name,
                           email:user.email,
-                         // profileImgLink:profile.image
+                          comname:user.comname
 
                       }).save().then((newUser=>{
                           console.log('User Created '+newUser);

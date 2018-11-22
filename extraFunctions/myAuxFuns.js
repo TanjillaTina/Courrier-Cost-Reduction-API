@@ -1,55 +1,55 @@
 
 
-var getUserDetail=function(user){
+var getUserDetail=function(userr){
 //console.log("Printing Username",user);
 
 var det=[];
 var i=0;
-var userNamee="";
+var username="";
 var designation="";
 var dept="";
 var comname="";
-    while(user[i]!='(' &&  i<user.length) 
+    while(userr[i]!='(' &&  i<userr.length) 
     {
-        userNamee=userNamee+user[i];
+        username=username+userr[i];
      i++;
     }
 
    // console.log("Printing username from here ",userNamee,"Index is ",i);
 
     i=i+1;
-    while(user[i]!=',' &&  i<user.length) 
+    while(userr[i]!=',' &&  i<userr.length) 
     {
-        designation=designation+user[i];
+        designation=designation+userr[i];
      i++;
     }
    // console.log("Printing designation from here ",designation,"Index is ",i);
   i=i+1;
 
-while(user[i]!=',' &&  i<user.length) 
+while(userr[i]!=',' &&  i<userr.length) 
     {
-        dept=dept+user[i];
+        dept=dept+userr[i];
      i++;
     }
    // console.log("Printing dept from here ",dept,"Index is ",i);
 
-    i=i+1;
+    i=i+2;
 
-    while(user[i]!=')' &&  i<user.length) 
+    while(userr[i]!=')' &&  i<userr.length) 
     {
-        comname=comname+user[i];
+        comname=comname+userr[i];
      i++;
     }
     //console.log("Printing comname from here ",comname,"Index is ",i);
 
-det.push(userNamee);
+det.push(username);
 det.push(comname);
 det.push(designation);
 det.push(dept);
 
 
 //console.log("Printing det ",det);
-return det;
+return comname;
 
 };
 

@@ -31,10 +31,10 @@
                     <div class="collapse navbar-collapse" id="navbarText">
                       <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                          <a class="nav-link" href="#PerInfo"><h5>InBound</h5><span class="sr-only">(current)</span></a>
+                          <a class="nav-link" href="/profile/inBound"><h5>InBound</h5><span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#Education"><h5>OutBound</h5></a>
+                          <a class="nav-link" href="/profile/outBound"><h5>OutBound</h5></a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="/auth/logout"><h5>LogOut</h5></a>
@@ -49,7 +49,13 @@
                  
             <div class="jumbotron" id="Contact" >
 <h2>Welcome <%= user %></h2>
-
+                    <% if (reqstat=="INBOUND") { %>
+                       <h2>Showing Form For <%=reqstat  %></h2>
+                    <% } %>
+                    <% if (reqstat=="OUTBOUND") { %>
+                      <h2>Showing Form For <%=reqstat %></h2>
+                   <% } %>
+                   <h2>Date  is <%= date %></h2>
                     <div class="container">
            <form action="/users/addreq" method="POST">
              
@@ -113,7 +119,13 @@
                                   
                                     <div class="card">
                                             <div class="card-header">
-                                              Shipper
+                                              
+                                              <% if (reqstat=="INBOUND") { %>
+                                                <h2>Shipping From From </h2>
+                                             <% } %>
+                                             <% if (reqstat=="OUTBOUND") { %>
+                                              <h2>Shipper </h2>
+                                           <% } %>
                                             </div>
                                             <div class="card-body">
                                           
