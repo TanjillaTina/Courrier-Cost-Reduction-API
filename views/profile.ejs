@@ -55,9 +55,9 @@
                     <% if (reqstat=="OUTBOUND") { %>
                       <h2>Showing Form For <%=reqstat %></h2>
                    <% } %>
-                   <h2>Date  is <%= date %></h2>
+                 
                     <div class="container">
-           <form action="/users/addreq" method="POST">
+           <form action="/profile/addreq" method="POST">
              
                             <div class="row">
                                     <div class="col-12">
@@ -71,15 +71,15 @@
                                                             <div class="form-row">
                                                               <div class="form-group col-md-4">
                                                                 <label for="buyer">Buyer</label>
-                                                                <input type="text" class="form-control" id="buyer" placeholder="Buyer">
+                                                                <input type="text" class="form-control" name="buyer" placeholder="Buyer">
                                                               </div>
                                                               <div class="form-group col-md-4">
                                                                 <label for="orderNumber">Order Number</label>
-                                                                <input type="text" class="form-control" id="orderNumber" placeholder="Order Number">
+                                                                <input type="text" class="form-control" name="orderNumber" placeholder="Order Number">
                                                               </div>
                                                               <div class="form-group col-md-4">
                                                                     <label for="style">Style</label>
-                                                                    <input type="text" class="form-control" id="style" placeholder="Style">
+                                                                    <input type="text" class="form-control" name="style" placeholder="Style">
                                                               </div>
                                                             </div>
                                                             
@@ -87,15 +87,15 @@
                                                             <div class="form-row">
                                                                     <div class="form-group col-md-4">
                                                                       <label for="estemWeight">Estimated Weight</label>
-                                                                      <input type="text" class="form-control" id="estemWeight" placeholder="Estimated Weight">
+                                                                      <input type="text" class="form-control" name="estemWeight" placeholder="Estimated Weight">
                                                                     </div>
                                                                     <div class="form-group col-md-4">
                                                                       <label for="article">Article</label>
-                                                                      <input type="text" class="form-control" id="article" placeholder="Article">
+                                                                      <input type="text" class="form-control" name="article" placeholder="Article">
                                                                     </div>
                                                                     <div class="form-group col-md-4">
                                                                             <label for="item">Item</label>
-                                                                            <input type="text" class="form-control" id="item" placeholder="Item">
+                                                                            <input type="text" class="form-control" name="item" placeholder="Item">
                                                                           </div>
                                                             </div>
 
@@ -131,24 +131,24 @@
                                           
                                                      <div class="form-group">
                                                             <label for="cpname1">Contact Person</label>
-                                                            <input type="text" class="form-control" id="cpname1" placeholder="Contact Person">
+                                                            <input type="text" class="form-control" name="cpname1" placeholder="Contact Person">
                                                           </div>
                                                           <div class="form-group">
                                                                 <label for="cpnum1">Contact Number</label>
-                                                                <input type="text" class="form-control" id="cpnum1" placeholder="Contact Number">
+                                                                <input type="text" class="form-control" name="cpnum1" placeholder="Contact Number">
                                                               </div>
                                                           <div class="form-group">
                                                                 <label for="comname1">Company Name</label>
-                                                                <input type="text" class="form-control" id="comname1" placeholder="Company Name">
+                                                                <input type="text" class="form-control" name="comname1" placeholder="Company Name">
                                                               </div>
                                                          <div class="form-group">
                                                             <label for="comadd1">Company Address</label>
-                                                            <input type="text" class="form-control" id="comadd1" placeholder="Company Address">
+                                                            <input type="text" class="form-control" name="comadd1" placeholder="Company Address">
                                                           </div>
                                                           <div class="form-row">
                                                             <div class="form-group col-md-7">
                                                               <label for="city1">City</label>
-                                                              <input type="text" class="form-control" id="city1"placeholder="City">
+                                                              <input type="text" class="form-control" name="city1"placeholder="City">
                                                             </div>
                                                             <div class="form-group col-md-5">
                                                               <label for="country1">Country</label>
@@ -159,7 +159,7 @@
                                                               </select>
                                                             -->
                                                           
-                                                              <input type="text" class="form-control" id="country1"placeholder="Country">
+                                                              <input type="text" class="form-control" name="country1"placeholder="Country">
 
                                                             </div>
                                                            
@@ -178,25 +178,25 @@
                                             
                                                      <div class="form-group">
                                                             <label for="cpname2">Name</label>
-                                                            <input type="text" class="form-control" id="cpname2" placeholder="Name">
+                                                            <input type="text" class="form-control" name="cpname2" placeholder="Name">
                                                           </div>
                                                           <div class="form-group">
                                                                 <label for="cpnum2">Contact Number</label>
-                                                                <input type="text" class="form-control" id="cpnum2" placeholder="Contact Number">
+                                                                <input type="text" class="form-control" name="cpnum2" placeholder="Contact Number">
                                                               </div>
 
                                                               <div class="form-group">
                                                                   <label for="comname2">Company Name</label>
-                                                                  <input type="text" class="form-control" id="comname2" placeholder="Company Address">
+                                                                  <input type="text" class="form-control" name="comname2" placeholder="Company Address">
                                                                 </div>
                                                          <div class="form-group">
                                                             <label for="comadd2">Company Address</label>
-                                                            <input type="text" class="form-control" id="comadd2" placeholder="Company Address">
+                                                            <input type="text" class="form-control" name="comadd2" placeholder="Company Address">
                                                           </div>
                                                           <div class="form-row">
                                                             <div class="form-group col-md-7">
                                                               <label for="city2">City</label>
-                                                              <input type="text" class="form-control" id="city2" placeholder="City">
+                                                              <input type="text" class="form-control" name="city2" placeholder="City">
                                                             </div>
                                                             <div class="form-group col-md-5">
                                                               <label for="country2">Country</label>
@@ -207,7 +207,7 @@
                                                               </select>
                                                             -->
                                                           
-                                                              <input type="text" class="form-control" id="country2"placeholder="Country">
+                                                              <input type="text" class="form-control" name="country2"placeholder="Country">
 
                                                             </div>
                                                            
@@ -232,6 +232,7 @@
                                   <div class="card">
                                          
                                           <div class="card-body">
+
                                               <button class="btn btn-large" type="submit">Submit form</button>
                                          </div>
                                         </div>
@@ -239,6 +240,8 @@
                             
                            
                        </div>
+                    <input type="hidden"  name="reqType" value=<%=reqstat %> >
+              
                         </form>   
            </div>
           
