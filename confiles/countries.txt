@@ -141,8 +141,8 @@ Papua New Guinea
 Paraguay
 Peru
 Philippines
-Poland,
-Portugal,
+Poland
+Portugal
 Qatar
 Romania
 Russia

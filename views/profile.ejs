@@ -20,7 +20,7 @@
     </head>
     <body>
           
-                  
+      
                   
                   <div class="container-fluid fixed-top " style="background-color: white;">
                   <nav class="navbar navbar-toggleable-md navbar-light bg-faded" >
@@ -209,9 +209,21 @@
                                                               </select>
                                                             -->
                                                           
-                                                              <input type="text" class="form-control" name="country2"placeholder="Country">
+                                                            <select class="form-control">
+                                                                <% countriess.forEach(function(countriess) { %>
+                                                                  <option><%= countriess.countryname %></option>
+                                                                  
+                                                             
+                                                         
+                                                                <% }); %>
+                                                            </select>
 
+                                                            <!--
+                                                          
+                                                              <input type="text" class="form-control" name="country2"placeholder="Country">
+                                                            -->
                                                             </div>
+                                                            
                                                            
                                                           </div>
                                                 
