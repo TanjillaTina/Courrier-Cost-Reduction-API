@@ -24,21 +24,13 @@ var authCheck=(req,res,next)=>{
 Country.find({},null,{sort: {countryname: 1}}).then(function(results){
   
   let countriesa=results.filter((results)=>{
-    //console.log("Printing Countries"+countriesa.countryname);
-    return results;
-    
+    return results;   
 }
 
 );
 res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa});
-   //return results;
-   //console.log("Printing Countries"+countriesa); 
-}
-);
 
-     
-
-      
+});
 
 };
 
@@ -46,14 +38,35 @@ res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa});
   var outBound=(req,res)=>{
     var user=req.user;
     RequestStatus="OUTBOUND";      
-    res.render('profile',{user:user,reqstat:RequestStatus});
+    //res.render('profile',{user:user,reqstat:RequestStatus});
+    
+    Country.find({},null,{sort: {countryname: 1}}).then(function(results){
+  
+      let countriesa=results.filter((results)=>{
+        return results;   
+    }
+    
+    );
+    res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa});
+    
+    });
 
     };
 
     var inBound=(req,res)=>{
       var user=req.user;
       RequestStatus="INBOUND";   
-      res.render('profile',{user:user,reqstat:RequestStatus});
+  
+      Country.find({},null,{sort: {countryname: 1}}).then(function(results){
+  
+        let countriesa=results.filter((results)=>{
+          return results;   
+      }
+      
+      );
+      res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa});
+      
+      });
   
       };
 
