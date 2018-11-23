@@ -2,6 +2,7 @@ var express = require('express');
 var RequestStatus="INBOUND";
 var UserModel=require('../models/user-model');
 var Request=require('../models/request-model');
+const Country=require('../models/countries');
 
 //this fun is to check if,someone is logged-in in the page, if yes, redirect to profile page, else redirect to login page
 //middleware function, that's gonna set in before profile page is redirected
@@ -19,7 +20,15 @@ var authCheck=(req,res,next)=>{
 
  var profilePage= (req, res)=> {
   
+  
+
+
+
+
+
+
        var user=req.user;
+
        res.render('profile',{user:user,reqstat:RequestStatus});
 
 };
