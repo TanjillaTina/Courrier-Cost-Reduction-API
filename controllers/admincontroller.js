@@ -18,12 +18,16 @@ var authCheck=(req,res,next)=>{
  };
 
 var adminPage= (req, res)=> {
-
-    res.render('admin', { user: req.user});
+var user=req.user;
+if (user.username=='RequestQueue')
+   { res.redirect('/requests'); }
+   if(user.username=='ConfirmQueue')
+   {  res.redirect('/confirms'); }
   };
   
-module.exports = {
+
+
+      module.exports = {
     adminPage,
     authCheck
- 
     };

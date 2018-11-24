@@ -12,6 +12,10 @@ var usersRouter = require('./routes/users');
 var authRouter = require('./routes/authRoutes');
 var profileRouter=require('./routes/profileRoutes');
 var adminRouter=require('./routes/adminRoutes');
+var requestRouter=require('./routes/requestRoutes');
+var confirmRouter=require('./routes/confirmRoutes');
+
+
 
 const passport=require('passport');
 const cookieSession=require('cookie-session');
@@ -78,6 +82,8 @@ app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/profile',profileRouter);
 app.use('/admin',adminRouter);
+app.use('/requests',requestRouter);
+app.use('/confirms',confirmRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
