@@ -4,11 +4,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var keys=require('./config/keys');
+var flash=require('connect-flash');
+var session=require('express-session');
 
-var indexRouter = require('./routes/index');
+
+
+var indexRouter = require('./routes/indexRoutes');
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/authRoutes');
 var profileRouter=require('./routes/profileRoutes');
+var adminRouter=require('./routes/adminRoutes');
 
 const passport=require('passport');
 const cookieSession=require('cookie-session');
@@ -43,6 +48,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+///express messages
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.info_msg=req.flash('info_msg');
+  res.locals.user = req.user || null;
+  
+  next();
+});
+
 
 
 // view engine setup
@@ -61,6 +78,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/profile',profileRouter);
+app.use('/admin',adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

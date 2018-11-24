@@ -8,6 +8,12 @@ var loginPage= (req, res)=> {
   };
 
 
+//auth login
+var login= (req, res)=> {
+  res.render('login');
+};
+
+
 //auth logout
 var logOut=(req, res)=>{
     //res.send('respond with a logout');
@@ -26,6 +32,7 @@ var RedirectProfilePage=(req, res)=>{
 module.exports = {
     loginPage,
     logOut,
-    RedirectProfilePage
+    RedirectProfilePage,
+    login
     };
   

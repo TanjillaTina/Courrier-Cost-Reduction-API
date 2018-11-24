@@ -3,6 +3,7 @@ const keys=require('./keys');
 const User=require('../models/user-model');
 const OutlookStrategy=require('passport-outlook');
 const ComFun=require('../extraFunctions/myAuxFuns');
+const LocalStrategy = require('passport-local').Strategy;
 
 passport.serializeUser((user,done)=>{
     done(null,user.id);
@@ -88,3 +89,45 @@ passport.use(new OutlookStrategy({
         ));
 
 
+
+
+//local strategy
+
+passport.use(new LocalStrategy((username,password,done)=>{
+    User.getUserByUsername(username,(err,user)=>{
+         if (err) throw err;
+         if(!user){
+             return done(null,false,{message:'Invalid Username'});
+         }
+        User.comparePassword(password,user.password,(err,isMatch)=>{
+         if (err) throw err;
+         if(isMatch){
+             return done(null,user);
+         }else{
+             return done(null,false,{message:'Wrong Password !!'});
+         }
+        });
+    });
+  }));
+ //local strategy
+
+passport.use(new LocalStrategy((username,password,done)=>{
+  User.getUserByUsername(username,(err,user)=>{
+       if (err) throw err;
+       if(!user){
+           console.log('Invalid Username');
+           return done(null,false,{message:'Invalid Username'});
+       }
+      User.comparePassword(password,user.password,(err,isMatch)=>{
+       if (err) throw err;
+       
+       if(isMatch){
+           console.log('Password Match');
+           return done(null,user);
+       }else{console.log('Wrong Password !!');
+           return done(null,false,{message:'Wrong Password !!'});
+       }
+      });
+  });
+}));
+ 
