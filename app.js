@@ -4,9 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var keys=require('./config/keys');
-
-
-
+var session=require('express-session');
+var flash=require('connect-flash');
 
 var indexRouter = require('./routes/indexRoutes');
 var usersRouter = require('./routes/users');
@@ -40,12 +39,13 @@ app.use(cookieSession({
 }));
 
 
+
+
 ///we want passport to initialize first, then use session-cookies
 //1st initialize passport
 app.use(passport.initialize());
 //2nd initialize session to control login
 app.use(passport.session());
-
 
 
 
@@ -58,9 +58,20 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
+//session middleware
 
+//session middleware
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true
+}));
+
+
+app.use(flash());
 //routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

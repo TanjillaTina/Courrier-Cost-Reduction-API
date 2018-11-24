@@ -31,7 +31,7 @@ var indexPage= (req, res)=> {
 // );
 
 
-    res.render('index', { user: req.user});
+    res.render('index', { user: req.user,mesg:req.flash()});
   };
   
 module.exports = {

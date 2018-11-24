@@ -7,7 +7,8 @@ var express = require('express');
 var authCheck=(req,res,next)=>{
     if(!req.user){
       //if user isn't logged in 
-      res.redirect('/auth/login');
+      req.flash('error_msg', 'You are not authorized to view that page');
+      res.redirect('/');
  
     }
     else{

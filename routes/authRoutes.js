@@ -13,17 +13,19 @@ router.get('/login',authController.loginPage);
 
 //local=login
 
-/* GET register page. */
 router.post('/login', function(req, res, next) {
 
   passport.authenticate('local',{
-    successRedirect:'/admin',
-    failureRedirect:'/',
+    successRedirect:('/admin'),
+    failureRedirect:('/'),
     //failureFlash:true
 })(req,res,next);
 
 
 });
+
+
+
 
 //auth logout
 router.get('/logout',authController.logOut);

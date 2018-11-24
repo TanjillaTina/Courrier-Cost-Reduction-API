@@ -9,7 +9,8 @@ var Country=require('../models/countries');
 var authCheck=(req,res,next)=>{
     if(!req.user){
       //if user isn't logged in 
-      res.redirect('/auth/login');
+      req.flash('error_msg', 'You are not authorized to view that page');
+      res.redirect('/');
  
     }
     else{
@@ -28,7 +29,7 @@ Country.find({},null,{sort: {countryname: 1}}).then(function(results){
 }
 
 );
-res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa});
+res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa,mesg:req.flash()});
 
 });
 
@@ -47,7 +48,7 @@ res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa});
     }
     
     );
-    res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa});
+    res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa,mesg:req.flash()});
     
     });
 
@@ -64,7 +65,7 @@ res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa});
       }
       
       );
-      res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa});
+      res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa,mesg:req.flash()});
       
       });
   
@@ -114,9 +115,11 @@ res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa});
 
 
               result.save();
+              req.flash('insert_msg', 'Your Form Is Submitted Successfully!!');
               res.redirect('/profile');
             }).catch((err)=>{
               console.log(err);
+              req.flash('cant_insert_msg', 'Sorry!! Failed to submit form!! Try Again!!');
               res.redirect('/profile');  
             });
     

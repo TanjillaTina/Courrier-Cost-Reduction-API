@@ -42,6 +42,7 @@
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
    <link href="/css/jumbotron-narrow.css" rel="stylesheet">
+   
     </head>
     <body>
         <div class="container">
@@ -55,6 +56,12 @@
               <p></p>
         <br>
       
+        <% if(mesg.error_msg) { %>
+                    
+                    
+            <h3 class="myerror"> <%= mesg.error_msg %> </h3>
+               
+         <% }%>
          
                       <div class="card">
                             <div class="card-header">
