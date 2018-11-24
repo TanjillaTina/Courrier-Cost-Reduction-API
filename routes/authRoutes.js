@@ -47,7 +47,7 @@ router.get('/outlook',
 
 
 router.get('/outlook/callback', 
-  passport.authenticate('windowslive', { failureRedirect: '/login' }),
+  passport.authenticate('windowslive', { failureRedirect: '/' }),
   function(req, res) {
     // Successful authentication, redirect profile.
     res.redirect('/profile/');
