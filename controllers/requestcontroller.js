@@ -25,11 +25,17 @@ Request.find({}).distinct('shiperOrshippingTo.country1').then(function(results){
   //console.log(results);
   //console.log("Printing"+cons[0]);
   Request.find().then(function(result){
-   let requests=result;
-
+   //let reqs=!result.requestQueue;
+  let reqs=result.filter((result)=>{
+    // console.log("Type is "+todos);
+       return !result.requestQueue;
+     
+   });
    //console.log("Printing Distinct Countries "+cons);
-   //console.log("Printing Alll Doics"+alof);
-   res.render('requestpage',{user:req.user,countries:countries,requests:requests});
+   //console.log("Printing from here "+reqs);
+
+
+   res.render('requestpage',{user:req.user,countries:countries,requests:reqs});
   });
 
 
@@ -40,8 +46,31 @@ Request.find({}).distinct('shiperOrshippingTo.country1').then(function(results){
 
   };
 
+
+  var SendToOnProcess=(req,res)=>{
+ var requesstId=req.body.reqqId;
+ console.log("Printing Req Id "+requesstId);
+
+
+ //res.redirect('/requests');
+
+
+
+ Request.findById(requesstId, function(err, usera) {
+    usera.set(usera.requestQueue=!usera.requestQueue);
+  
+
+  // Using a promise rather than a callback
+  usera.save().then(function(savedPost) {
+    res.redirect('/requests');
+  }).catch(function(err) {
+    res.status(500).send(err);
+  });
+});
+  };
   
 module.exports={
     authCheck,
-    requestPage   
+    requestPage,
+    SendToOnProcess
 }
