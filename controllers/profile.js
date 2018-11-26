@@ -3,7 +3,7 @@ var RequestStatus="INBOUND";
 var UserModel=require('../models/user-model');
 var Request=require('../models/request-model');
 var Country=require('../models/countries');
-
+var InCountry=require('../models/inserted-countries');
 //this fun is to check if,someone is logged-in in the page, if yes, redirect to profile page, else redirect to login page
 //middleware function, that's gonna set in before profile page is redirected
 var authCheck=(req,res,next)=>{
@@ -76,20 +76,18 @@ res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa,mesg
 
         var user=req.user;
         var d = new Date();
-
+        
 
             let request=new Request({
               userId:user._id,
+              usermail:user.email,
               reqDay:d.getDay(),
               reqDate:d,
-              buyer:req.body.buyer,
-              orderNumber:req.body.orderNumber,
-              style:req.body.style,
+              comname:user.comname,
               estemWeight:req.body.estemWeight,
-              article:req.body.article,
-              item:req.body.item,
-              reqtype:req.body.reqType
-
+              reqtype:req.body.reqType,
+              requestQueue:true
+              
             });
 
             request.save().then((result)=>{
@@ -102,6 +100,7 @@ res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa,mesg
                 comadd1:req.body.comadd1,
                 city1:req.body.city1,
                 country1:req.body.country1
+                
               });
               result.conignee.push({
                 cpname2:req.body.comname2,
@@ -110,6 +109,14 @@ res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa,mesg
                 comadd2:req.body.comadd2,
                 city2:req.body.city2,
                 country2:req.body.country2
+                
+              });
+              result.reqDetail.push({
+                buyer:req.body.buyer,
+                orderNumber:req.body.orderNumber,
+                style:req.body.style,
+                article:req.body.article,
+                item:req.body.item
               });
 
 

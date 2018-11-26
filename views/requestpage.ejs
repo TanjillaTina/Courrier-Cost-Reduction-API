@@ -12,10 +12,26 @@
     <!-- Bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/user.css" rel="stylesheet">
+    <link href="/css/jumbotron-narrow.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    -->
+    <script src="/bootstrap/js/bootstrap2.min.js"></script>
+    <link href="/css/jumbotron-narrow.css" rel="stylesheet">
     <!-- Custom styles for this template 
    <link href="/css/jumbotron-narrow.css" rel="stylesheet">-->
+   <script>
+      $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
+      
+      </script>                  
+  
   
     </head>
     <body>
@@ -30,12 +46,7 @@
                     <a class="navbar-brand" href=""><h1>CourrierCostReduction</h1></a>
                     <div class="collapse navbar-collapse" id="navbarText">
                       <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                          <a class="nav-link" href="/profile/inBound"><h5>InBound</h5><span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="/profile/outBound"><h5>OutBound</h5></a>
-                        </li>
+                       
                         <li class="nav-item">
                           <a class="nav-link" href="/auth/logout"><h5>LogOut</h5></a>
                         </li>
@@ -44,65 +55,9 @@
                   </nav>
                   </div>
                   <!-- Fixed Top Menu div ends here -->
-                 
-                 <br><br><br>
-                 
-            <div class="jumbotron" id="Contact" >
-<h2>Welcome <%= user.username %></h2>
-                    
-                 
-                    <div class="container">
-           <form action="/profile/addreq" method="POST">
              
-                            <div class="row">
-                                    <div class="col-12">
-                                          <div class="card">
-                                                  <div class="card-header">
-                                                    <h2>Request Form For
-                                                  
-                                                Request</h2>
-                                                  </div>
-                                                  <div class="card-body">
-                                                    <h3 class="card-title">Request Detail</h3>
-                                                    
-                                                            <div class="form-row">
-                                                              <div class="form-group col-md-4">
-                                                                <label for="buyer">Buyer</label>
-                                                                <input type="text" class="form-control" name="buyer" placeholder="Buyer">
-                                                              </div>
-                                                              <div class="form-group col-md-4">
-                                                                <label for="orderNumber">Order Number</label>
-                                                                <input type="text" class="form-control" name="orderNumber" placeholder="Order Number">
-                                                              </div>
-                                                              <div class="form-group col-md-4">
-                                                                    <label for="style">Style</label>
-                                                                    <input type="text" class="form-control" name="style" placeholder="Style">
-                                                              </div>
-                                                            </div>
-                                                            
-                                                           
-                                                            <div class="form-row">
-                                                                    <div class="form-group col-md-4">
-                                                                      <label for="estemWeight">Estimated Weight</label>
-                                                                      <input type="text" class="form-control" name="estemWeight" placeholder="Estimated Weight">
-                                                                    </div>
-                                                                    <div class="form-group col-md-4">
-                                                                      <label for="article">Article</label>
-                                                                      <input type="text" class="form-control" name="article" placeholder="Article">
-                                                                    </div>
-                                                                    <div class="form-group col-md-4">
-                                                                            <label for="item">Item</label>
-                                                                            <input type="text" class="form-control" name="item" placeholder="Item">
-                                                                          </div>
-                                                            </div>
-
-                                                          
-                                                  </div>
-                                                </div>
-                                    </div>
-                                    
-                                   
-                               </div>
+                 
+            
 
 
 
@@ -111,131 +66,142 @@
 
 
 
-                        <div class="row">
-                              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br>
+
+
+<div class="container">
+
+<h2>Wecome <%= user.username %></h2>
+
+          <div class="row">
                                   
-                                    <div class="card">
-                                            <div class="card-header">
-                                             
-                                            </div>
-                                            <div class="card-body">
-                                          
-                                                     <div class="form-group">
-                                                            <label for="cpname1">Contact Person</label>
-                                                            <input type="text" class="form-control" name="cpname1" placeholder="Contact Person">
-                                                          </div>
-                                                          <div class="form-group">
-                                                                <label for="cpnum1">Contact Number</label>
-                                                                <input type="text" class="form-control" name="cpnum1" placeholder="Contact Number">
-                                                              </div>
-                                                          <div class="form-group">
-                                                                <label for="comname1">Company Name</label>
-                                                                <input type="text" class="form-control" name="comname1" placeholder="Company Name">
-                                                              </div>
-                                                         <div class="form-group">
-                                                            <label for="comadd1">Company Address</label>
-                                                            <input type="text" class="form-control" name="comadd1" placeholder="Company Address">
-                                                          </div>
-                                                          <div class="form-row">
-                                                            <div class="form-group col-md-7">
-                                                              <label for="city1">City</label>
-                                                              <input type="text" class="form-control" name="city1"placeholder="City">
-                                                            </div>
-                                                            <div class="form-group col-md-5">
-                                                                <label for="country1">Country</label>
-                                                                
-                                                             
-                                                              </div>
-                                                           
-                                                          </div>
-                                                  
-                                            </div>
-                                          </div>
-                              </div>
-                              <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
-                                    <div class="card">
-                                            <div class="card-header">
-                                              <h3>Cosignee</h3>
-                                            </div>
-                                            <div class="card-body">
-                                          
-                                            
-                                                     <div class="form-group">
-                                                            <label for="cpname2">Name</label>
-                                                            <input type="text" class="form-control" name="cpname2" placeholder="Name">
-                                                          </div>
-                                                          <div class="form-group">
-                                                                <label for="cpnum2">Contact Number</label>
-                                                                <input type="text" class="form-control" name="cpnum2" placeholder="Contact Number">
-                                                              </div>
-
-                                                              <div class="form-group">
-                                                                  <label for="comname2">Company Name</label>
-                                                                  <input type="text" class="form-control" name="comname2" placeholder="Company Address">
-                                                                </div>
-                                                         <div class="form-group">
-                                                            <label for="comadd2">Company Address</label>
-                                                            <input type="text" class="form-control" name="comadd2" placeholder="Company Address">
-                                                          </div>
-                                                          <div class="form-row">
-                                                            <div class="form-group col-md-7">
-                                                              <label for="city2">City</label>
-                                                              <input type="text" class="form-control" name="city2" placeholder="City">
-                                                            </div>
-                                                            <div class="form-group col-md-5">
-                                                              <label for="country2">Country</label>
-                                                              
-                                                          
-                                                            </div>
-                                                            
-                                                           
-                                                          </div>
-                                                
-                                            </div>
-                                            
-                                          </div>
-
-                                          
-                              </div>
-                             
-                         </div>
+              <div class="card">
+                          <div class="card-header">
+                                        <h2>Country</h2>
+                                        
+                          </div>
 
 
-
-
-
-
-                         <div class="row">
-                            <div class="col-12">
-                                  <div class="card">
-                                         
-                                          <div class="card-body">
-
-                                              <button class="btn btn-large" type="submit">Submit form</button>
-                                         </div>
-                                        </div>
-                            </div>
-                            
-                           
-                       </div>
-                    
-              
-                        </form>   
-           </div>
-          
-           
-
-           
-        
-    
+                          <div class="card-body">
+                                        <h3 class="card-title">Inbounds</h3>
+                                        
+                                        ​​​​​​​​​​​​​<div class="table-responsive">          
+                                            <table class="table">
+                                              <thead>
+                                                <tr>
+                                                  <th>#</th>
+                                                  <th>Country Name</th>
+                                                  <th>Request By</th>
+                                                  <th>Request Date</th>
+                                                  <th>Estimated Weight</th>
+                                                  <th>item </th>
+                                                  <th>Country</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <tr>
+                                                  <td>1</td>
+                                                  <td>Anna</td>
+                                                  <td>Pitt</td>
+                                                  <td>35</td>
+                                                  <td>New York</td>
+                                                  <td>USA</td>
+                                                  <td>
+                                                    <!-- Button trigger modal -->
+                                                      <button type="button" class="btn " data-toggle="modal" data-target="#exampleModal">
+                                                          Launch demo modal
+                                                        </button>
+                                                        <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
 </div>
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                            </div>       
+                                                                
+
+                                              
+                          </div>
+              </div>
+                                  
+                                  
+                                  
+                                 
+          </div>
 
 
 
+                     
+</div>
+          
 
 
-                  
 
         
     </body>
+  
 </html>

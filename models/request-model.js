@@ -20,26 +20,39 @@ let shiperOrshippingToSchema=new Schema({
     comname1:{ type:String,required:false},
     comadd1:{ type:String,required:false},
     city1:{ type:String,required:false},
-    country1:{ type:String,required:false},  
+    country1:{ type:String,required:false},
+   
 });
 
-
-let requestSchema=new Schema({
-    userId:{ type: String ,required:true},
-    reqDay:{ type: String ,required:true},
-    reqDate:{ type: String ,required:true},
+let reqDetailSchema=new Schema({
     buyer:{type: String,required:false},
     orderNumber:{type: String,required:false},
     style:{type: String,required:false},
-    estemWeight:{type: String,required:false},
     article:{type: String,required:false},
     item:{type: String,required:false},
-    reqtype:{type: String,required:false},
-    done:{ type: Boolean ,default:false},
-   shiperOrshippingTo:[shiperOrshippingToSchema],
-   conignee:[conigneeSchema]
 
 });
+
+let requestSchema=new Schema({
+    userId:{ type: String ,required:true},
+    usermail:{type:String,required:true},
+    reqDay:{ type: String ,required:true},
+    reqDate:{ type: String ,required:true},
+    comname:{type: String,required:false},  
+    estemWeight:{type: String,required:false},
+    reqtype:{type: String,required:false},
+    boxSize:{type: String,required:false},
+    cost:{type: String,required:false},
+    requestQueue:{ type: Boolean ,default:false},
+    onprocessingQueue:{ type: Boolean ,default:false},
+    done:{ type: Boolean ,default:false}, 
+    shiperOrshippingTo:[shiperOrshippingToSchema],
+    conignee:[conigneeSchema],
+    reqDetail:[reqDetailSchema]
+
+});
+
+
 
 
 

@@ -1,7 +1,8 @@
 
 var express = require('express');
 const passport=require('passport');
-
+var Request=require('../models/request-model');
+var User=require('../models/user-model');
 //auth login
 
 var authCheck=(req,res,next)=>{
@@ -18,7 +19,25 @@ var authCheck=(req,res,next)=>{
  };
 
 var requestPage= (req, res)=> {
-    res.render('requestpage',{user:req.user});
+
+Request.find({}).distinct('shiperOrshippingTo.country1').then(function(results){
+   let countries=results;
+  //console.log(results);
+  //console.log("Printing"+cons[0]);
+  Request.find().then(function(result){
+   let requests=result;
+
+   //console.log("Printing Distinct Countries "+cons);
+   //console.log("Printing Alll Doics"+alof);
+   res.render('requestpage',{user:req.user,countries:countries,requests:requests});
+  });
+
+
+  
+  
+//return results;
+});
+
   };
 
   
