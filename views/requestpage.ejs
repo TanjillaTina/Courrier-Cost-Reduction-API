@@ -13,16 +13,20 @@
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/user.css" rel="stylesheet">
     <link href="/css/jumbotron-narrow.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    ​ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!-- 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
     -->
-    <script src="/bootstrap/js/bootstrap2.min.js"></script>
-    <link href="/css/jumbotron-narrow.css" rel="stylesheet">
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+
     <!-- Custom styles for this template 
 
    <link href="/css/jumbotron-narrow.css" rel="stylesheet">-->
@@ -32,12 +36,7 @@ table links starts here
    -->
 
 
-   <script>
-      $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-  })
-      
-      </script>                  
+             
   
   
     </head>
@@ -72,53 +71,6 @@ table links starts here
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <br><br><br>
 
 
@@ -126,12 +78,12 @@ table links starts here
 
           <div class="row">
             
-                      <h3>Showing All Requests</h3>     
+               <h3>Showing All Requests</h3>     
 
-<% countries.forEach(function(countries) { %>
+        <% countries.forEach(function(countries) { %>
 
-              <div class="card">
-                          <div class="card-header">
+                 <div class="card">
+                           <div class="card-header">
                                 <h4>Country Name: <%=countries %> </h4>
                                 <form>
 
@@ -145,229 +97,140 @@ table links starts here
                                         </div>
                                       </div>
                                   </form>      
-                          </div>
+                            </div>
 
 
                           <div class="card-body">
 
-                             
-
-
-                                        <h5>Inbounds Requests</h5>
+             
+                                      <h5>Inbounds Requests</h5>
                                                  
                           
                                         ​​​​​​​​​​​​​<div class="table-responsive">          
                                             <table class="table">
-                                              <thead>
-                                                <tr>
-                                                  <th>Request By</th>
-                                                  <th>Company Name</th>
-                                                  <th>Request Date</th>
-                                                  <th>Send To Excell</th>
-                                                  <th>Request Seen</th>
-                                                  
-                                                  
-                                                </tr>
-                                              </thead>
-                                              <tbody>
-                 <% requests.forEach(function(requests) { %>
-                        <% if (requests.shiperOrshippingTo[0].country1==countries && requests.reqtype=="INBOUND") { %>
-                                                <tr>
-                                                  <td><%=requests.usermail%></td>
-                                                  <td><%=requests.comname%></td>
-                                                  <td><%=requests.reqDate%></td>
-                                                  <td>
-                                                    <form  action="/requests/SendToOnProcess" method="POST">
-                                                      <input type="hidden"  name="reqqId" value=<%=requests._id %> >
-                                                        <div class="form-group">
-                                                            
-                                                            <button type="submit" class="btn btn-primary">Send To Excel</button>
+                                                <thead>
+                                                    <tr>
+                                                      <th>Request By</th>
+                                                      <th>View Detail</th>
+                                                      <th>Company Name</th>
+                                                      <th>Request Date</th>
+                                                      <th>Send To Excell</th>
+                                                       
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                      <% requests.forEach(function(requests) { %>
+                                                             <% if (requests.shiperOrshippingTo[0].country1==countries && requests.reqtype=="INBOUND") { %>
+                                                                    <tr>
+                                                                       <td><%=requests.usermail%></td>
+                                                                             <td>
+                                                                                <div class="btn-group dropleft">
+                                                                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search"></i></button>
+                                                                                           <div class="dropdown-menu showingmenu">
+                                                                                                  <form>
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
+                                                                                                            <div class="card">
+                                                                                                                  <div class="card-header">
+                                                                                                                       
+                                                                                                                      <% if (requests.reqtype=="INBOUND") { %>
+                                                                                                                          <h3>Shipping From </h3>
+                                                                                                                      <% } %>
+                                                                                                                      <% if (requests.reqtype=="OUTBOUND") { %>
+                                                                                                                          <h3>Shipper </h3>
+                                                                                                                      <% } %>
+                                                                                                                  </div>
+                                                                                                                  <div class="card-body">
+                                                                                                                                     
+                                                                                                                      <div class="form-group">
+                                                                                                                          <label for="cpname1">Contact Person : <%= requests.shiperOrshippingTo[0].cpname1 %></label>
+                                                                                                                      </div>
+                                                                                                                      <div class="form-group">
+                                                                                                                          <label for="cpnum1">Contact Number : <%= requests.shiperOrshippingTo[0].cpnum1 %></label>                                       
+                                                                                                                      </div>
+                                                                                                                      <div class="form-group">
+                                                                                                                          <label for="comname1">Company Name :  <%= requests.shiperOrshippingTo[0].comname1 %></label>
+                                                                                                                      </div>
+                                                                                                                      <div class="form-group">
+                                                                                                                          <label for="comadd1">Company Address : <%= requests.shiperOrshippingTo[0].comadd1 %></label>
+                                                                                                                      </div>
+                                                                                                                      <div class="form-group">
+                                                                                                                          <label for="city1">City : <%= requests.shiperOrshippingTo[0].city1 %></label>
+                                                                                                                      </div>
+                                                                                                                      <div class="form-group">
+                                                                                                                          <label for="country1">Country : <%= requests.shiperOrshippingTo[0].country1 %></label>
+                                                                                                                      </div>
+                                                                                                                  </div>
+                                                                                                            </div>
+                                                                                                      </div>
 
-                                                          </div>
-                                                    </form>
-                                                  </td>
-                                                 
-                                                  <td>
-                                                    <!-- Button trigger modal -->
-                                                      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
-                                                          View Detail
-                                                        </button>
-                                                        <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Showing Request Detail</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <div class="row">
-                  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
-                      
-                        <div class="card">
-                                <div class="card-header">
-                                  
-                                  <% if (requests.reqtype=="INBOUND") { %>
-                                    <h3>Shipping From </h3>
-                                 <% } %>
-                                 <% if (requests.reqtype=="OUTBOUND") { %>
-                                  <h3>Shipper </h3>
-                               <% } %>
-                                </div>
-                                <div class="card-body">
-                              
-                                         <div class="form-group">
-                                                <label for="cpname1">Contact Person : <%= requests.shiperOrshippingTo[0].cpname1 %></label>
-                                                
-                                              </div>
-                                              <div class="form-group">
-                                                    <label for="cpnum1">Contact Number : <%= requests.shiperOrshippingTo[0].cpnum1 %></label>
-                                                    
-                                                  </div>
-                                              <div class="form-group">
-                                                    <label for="comname1">Company Name :  <%= requests.shiperOrshippingTo[0].comname1 %></label>
-                                                   
-                                                  </div>
-                                             <div class="form-group">
-                                                <label for="comadd1">Company Address : <%= requests.shiperOrshippingTo[0].comadd1 %></label>
-                                                
-                                              </div>
-                                              <div class="form-group">
-                                                  <label for="city1">City : <%= requests.shiperOrshippingTo[0].city1 %></label>
-                                                  
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="country1">Country : <%= requests.shiperOrshippingTo[0].country1 %></label>
-                                                    
-                                                  </div>
-                                             
-                                      
-                                </div>
-                              </div>
-                  </div>
-                  <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
-                      
-                      <div class="card">
-                              <div class="card-header">
-                                
-                               
-                                <h3>Cosignee </h3>
-                            
-                              </div>
-                              <div class="card-body">
-                            
-                                       <div class="form-group">
-                                              <label for="cpname2">Contact Person : <%= requests.conignee[0].cpname2 %></label>
-                                              
-                                            </div>
-                                            <div class="form-group">
-                                                  <label for="cpnum1">Contact Number : <%= requests.conignee[0].cpnum2 %></label>
-                                                  
-                                                </div>
-                                            <div class="form-group">
-                                                  <label for="comname1">Company Name :  <%= requests.conignee[0].comname2 %></label>
-                                                 
-                                                </div>
-                                           <div class="form-group">
-                                              <label for="comadd1">Company Address : <%= requests.conignee[0].comadd2 %></label>
-                                              
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="city1">City : <%= requests.conignee[0].city2 %></label>
-                                                
-                                              </div>
-                                              <div class="form-group">
-                                                  <label for="country1">Country : <%= requests.conignee[0].country2 %></label>
-                                                  
-                                                </div>
-                                           
-                                    
-                              </div>
-                            </div>
-                </div>
-                 
-             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-</div>
-                                                  </td>
-                                                 
-                                                </tr>
-                                                <% } %> 
 
-                           <% }); %>
-                                              </tbody>
+                                                                                                      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
+                                                                                                                             
+                                                                                                          <div class="card">
+                                                                                                              <div class="card-header">
+                                                                                                                   <h3>Cosignee </h3>
+                                                                                                              </div>
+                                                                                                              <div class="card-body">
+                                                                                                                   <div class="form-group">
+                                                                                                                      <label for="cpname2">Contact Person : <%= requests.conignee[0].cpname2 %></label>
+                                                                                                                   </div>
+                                                                                                                   <div class="form-group">
+                                                                                                                      <label for="cpnum1">Contact Number : <%= requests.conignee[0].cpnum2 %></label>
+                                                                                                                   </div>
+                                                                                                                   <div class="form-group">
+                                                                                                                      <label for="comname1">Company Name :  <%= requests.conignee[0].comname2 %></label>                                  
+                                                                                                                    </div>
+                                                                                                                                                 <div class="form-group">
+                                                                                                                                                     <label for="comadd1">Company Address : <%= requests.conignee[0].comadd2 %></label>
+                                                                                                                                                     
+                                                                                                                                                   </div>
+                                                                                                                                                   <div class="form-group">
+                                                                                                                                                       <label for="city1">City : <%= requests.conignee[0].city2 %></label>
+                                                                                                                                                       
+                                                                                                                                                     </div>
+                                                                                                                                                     <div class="form-group">
+                                                                                                                                                         <label for="country1">Country : <%= requests.conignee[0].country2 %></label>
+                                                                                                                                                         
+                                                                                                                                                       </div>
+                                                                                                                                                 
+                                                                                                                                           
+                                                                                                                                     </div>
+                                                                                                                                   </div>
+                                                                                                                       </div>
+                                                                                                                       
+                                                                                                                   </div>
+                                                                                                                   </div>
+                                                                                                                 </form>
+                                                                                                       </div>
+                                                                                                 </div>
+                                                                                </td>
+                                 
+                                                                                <td><%=requests.comname%></td>
+                                                                               <td><%=requests.reqDate%></td>
+                                                                               
+                                                                                       
+                                                                               <td>
+                                                                                   
+                                                                                   <form  action="/requests/SendToOnProcess" method="POST">
+                                                                                     <input type="hidden"  name="reqqId" value=<%=requests._id %> >
+                                                                                       <div class="form-group">
+                                                                                           
+                                                                                           <button type="submit"  class="btn btn-info "><i class="fa fa-share-square"></i>
+                                                                                         </button>
+                                 
+                                                                                         </div>
+                                                                                   </form>
+                                                                                 </td>
+                                                                                      
+                                                                                     </tr>
+                                                                                     <% } %> 
+                                     
+                                                                <% }); %>
+                                                                                   </tbody>
                                             </table>
                                             </div> 
                                             
-                                           
-                                                                
- 
-                                            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                                             <h5>Outbound Requests</h5>
@@ -378,11 +241,13 @@ table links starts here
                                                   <thead>
                                                     <tr>
                                                       <th>Request By</th>
+                                                      <th>View Detail</th>
                                                       <th>Company Name</th>
+                                                      
                                                       <th>Request Date</th>
-                                                      <th>Country 2</th>
+                                                
                                                       <th>Send To Excell</th>
-                                                      <th>Request Seen</th>
+                                                      
                                                      
                                                       
                                                     </tr>
@@ -392,130 +257,123 @@ table links starts here
                             <% if (requests.shiperOrshippingTo[0].country1==countries && requests.reqtype=="OUTBOUND") { %>
                                                     <tr>
                                                       <td><%=requests.usermail%></td>
-                                                      <td><%=requests.comname%></td>
-                                                      <td><%=requests.reqDate%></td>
-                                                      <td><%=requests.conignee[0].country2 %></td>
-                                                      <td>
-                                                        <form>
-                                                            <div class="form-group">
-                                                                
-                                                                <button type="submit" class="btn btn-primary">Send To Excel</button>
-                                                              </div>
-                                                        </form>
-                                                      </td>
+                                                      
                                                      
-                                                      <td>
-                                                        <!-- Button trigger modal -->
-                                                          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
-                                                              View Detail
-                                                            </button>
-                                                            <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Showing Request Detail</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                  <div class="row">
-                      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
-                          
-                            <div class="card">
-                                    <div class="card-header">
-                                      
-                                      <% if (requests.reqtype=="INBOUND") { %>
-                                        <h3>Shipping From </h3>
-                                     <% } %>
-                                     <% if (requests.reqtype=="OUTBOUND") { %>
-                                      <h3>Shipper </h3>
-                                   <% } %>
-                                    </div>
-                                    <div class="card-body">
-                                  
-                                             <div class="form-group">
-                                                    <label for="cpname1">Contact Person : <%= requests.shiperOrshippingTo[0].cpname1 %></label>
-                                                    
-                                                  </div>
-                                                  <div class="form-group">
-                                                        <label for="cpnum1">Contact Number : <%= requests.shiperOrshippingTo[0].cpnum1 %></label>
-                                                        
-                                                      </div>
-                                                  <div class="form-group">
-                                                        <label for="comname1">Company Name :  <%= requests.shiperOrshippingTo[0].comname1 %></label>
-                                                       
-                                                      </div>
-                                                 <div class="form-group">
-                                                    <label for="comadd1">Company Address : <%= requests.shiperOrshippingTo[0].comadd1 %></label>
-                                                    
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label for="city1">City : <%= requests.shiperOrshippingTo[0].city1 %></label>
+                                                <td>
+                                                       <!-- Example single danger button -->
+                                                       <div class="btn-group dropleft">
+                                                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search"></i></button>
+                                                          
+                                                                    <div class="dropdown-menu showingmenu">
+                                                                        <form>
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
+                                                                                            
+                                                                                              <div class="card">
+                                                                                                      <div class="card-header">
+                                                                                                        
+                                                                                                        <% if (requests.reqtype=="INBOUND") { %>
+                                                                                                          <h3>Shipping From </h3>
+                                                                                                      <% } %>
+                                                                                                      <% if (requests.reqtype=="OUTBOUND") { %>
+                                                                                                        <h3>Shipper </h3>
+                                                                                                    <% } %>
+                                                                                                      </div>
+                                                                                                      <div class="card-body">
+                                                                                                    
+                                                                                                              <div class="form-group">
+                                                                                                                      <label for="cpname1">Contact Person : <%= requests.shiperOrshippingTo[0].cpname1 %></label>
+                                                                                                                      
+                                                                                                                    </div>
+                                                                                                                    <div class="form-group">
+                                                                                                                          <label for="cpnum1">Contact Number : <%= requests.shiperOrshippingTo[0].cpnum1 %></label>
+                                                                                                                          
+                                                                                                                        </div>
+                                                                                                                    <div class="form-group">
+                                                                                                                          <label for="comname1">Company Name :  <%= requests.shiperOrshippingTo[0].comname1 %></label>
+                                                                                                                        
+                                                                                                                        </div>
+                                                                                                                  <div class="form-group">
+                                                                                                                      <label for="comadd1">Company Address : <%= requests.shiperOrshippingTo[0].comadd1 %></label>
+                                                                                                                      
+                                                                                                                    </div>
+                                                                                                                    <div class="form-group">
+                                                                                                                        <label for="city1">City : <%= requests.shiperOrshippingTo[0].city1 %></label>
+                                                                                                                        
+                                                                                                                      </div>
+                                                                                                                      <div class="form-group">
+                                                                                                                          <label for="country1">Country : <%= requests.shiperOrshippingTo[0].country1 %></label>
+                                                                                                                          
+                                                                                                                        </div>
+                                                                                                                  
+                                                                                                            
+                                                                                                      </div>
+                                                                                                    </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
+                                                                                            
+                                                                                            <div class="card">
+                                                                                                    <div class="card-header">
+                                                                                                      
+                                                                                                    
+                                                                                                      <h3>Cosignee </h3>
+                                                                                                  
+                                                                                                    </div>
+                                                                                                    <div class="card-body">
+                                                                                                  
+                                                                                                            <div class="form-group">
+                                                                                                                    <label for="cpname2">Contact Person : <%= requests.conignee[0].cpname2 %></label>
+                                                                                                                    
+                                                                                                                  </div>
+                                                                                                                  <div class="form-group">
+                                                                                                                        <label for="cpnum1">Contact Number : <%= requests.conignee[0].cpnum2 %></label>
+                                                                                                                        
+                                                                                                                      </div>
+                                                                                                                  <div class="form-group">
+                                                                                                                        <label for="comname1">Company Name :  <%= requests.conignee[0].comname2 %></label>
+                                                                                                                      
+                                                                                                                      </div>
+                                                                                                                <div class="form-group">
+                                                                                                                    <label for="comadd1">Company Address : <%= requests.conignee[0].comadd2 %></label>
+                                                                                                                    
+                                                                                                                  </div>
+                                                                                                                  <div class="form-group">
+                                                                                                                      <label for="city1">City : <%= requests.conignee[0].city2 %></label>
+                                                                                                                      
+                                                                                                                    </div>
+                                                                                                                    <div class="form-group">
+                                                                                                                        <label for="country1">Country : <%= requests.conignee[0].country2 %></label>
+                                                                                                                        
+                                                                                                                      </div>
+                                                                                                                
+                                                                                                          
+                                                                                                    </div>
+                                                                                                  </div>
+                                                                                      </div>
+                                                                                      
+                                                                                  </div>
+                                                                                  </div>
+                                                                                </form>
+                                                                      </div>
+                                                                </div>
+                                               </td>
+
+                                               <td><%=requests.comname%></td>
+                                              <td><%=requests.reqDate%></td>
+                                              
                                                       
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="country1">Country : <%= requests.shiperOrshippingTo[0].country1 %></label>
-                                                        
-                                                      </div>
-                                                    
-                                                 
-                                          
-                                    </div>
-                                  </div>
-                      </div>
-                      <div class="col-md-12 col-xs-12 col-sm-12 col-lg-6">
-                          
-                          <div class="card">
-                                  <div class="card-header">
-                                    
-                                   
-                                    <h3>Cosignee </h3>
-                                
-                                  </div>
-                                  <div class="card-body">
-                                
-                                           <div class="form-group">
-                                                  <label for="cpname2">Contact Person : <%= requests.conignee[0].cpname2 %></label>
+                                              <td>
                                                   
-                                                </div>
-                                                <div class="form-group">
-                                                      <label for="cpnum1">Contact Number : <%= requests.conignee[0].cpnum2 %></label>
-                                                      
-                                                    </div>
-                                                <div class="form-group">
-                                                      <label for="comname1">Company Name :  <%= requests.conignee[0].comname2 %></label>
-                                                     
-                                                    </div>
-                                               <div class="form-group">
-                                                  <label for="comadd1">Company Address : <%= requests.conignee[0].comadd2 %></label>
-                                                  
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="city1">City : <%= requests.conignee[0].city2 %></label>
-                                                    
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label for="country1">Country : <%= requests.conignee[0].country2 %></label>
-                                                      
-                                                    </div>
-                                               
-                                        
-                                  </div>
-                                </div>
-                    </div>
-                     
-                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-    </div>
-                                                      </td>
+                                                  <form  action="/requests/SendToOnProcess" method="POST">
+                                                    <input type="hidden"  name="reqqId" value=<%=requests._id %> >
+                                                      <div class="form-group">
+                                                          
+                                                          <button type="submit"  class="btn btn-info "><i class="fa fa-share-square"></i>
+                                                        </button>
+
+                                                        </div>
+                                                  </form>
+                                                </td>
                                                      
                                                     </tr>
                                                     <% } %> 

@@ -76,17 +76,21 @@ res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa,mesg
 
         var user=req.user;
         var d = new Date();
+        var t=d.getDate();
+        var m=d.getMonth()+1;
+        var y=d.getFullYear();
+        var da=t+"/"+m+"/"+y;
         
 
             let request=new Request({
               userId:user._id,
               usermail:user.email,
               reqDay:d.getDay(),
-              reqDate:d,
+              reqDate:da,
               comname:user.comname,
               estemWeight:req.body.estemWeight,
-              reqtype:req.body.reqType,
-              requestQueue:true
+              reqtype:req.body.reqType
+              
               
             });
 
