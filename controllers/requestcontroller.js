@@ -20,9 +20,11 @@ var authCheck=(req,res,next)=>{
 
 var requestPage= (req, res)=> {
 
-Request.find({}).distinct('shiperOrshippingTo.country1').then(function(results){
+Request.find({ shiperOrshippingTo:{ $size: 1 },
+conignee: { $size: 1 } , 'requestQueue':false 
+ }).distinct('shiperOrshippingTo.country1').then(function(results){
    let countries=results;
-  //console.log(results);
+ console.log(results);
   //console.log("Printing"+cons[0]);
   Request.find().then(function(result){
    //let reqs=!result.requestQueue;
