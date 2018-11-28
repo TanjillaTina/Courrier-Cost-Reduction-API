@@ -71,8 +71,49 @@ conignee: { $size: 1 } , 'requestQueue':false
 });
   };
   
+
+
+
+
+
+  var SetCourrierName=(req,res)=>{
+    var getCountryName=req.body.countryNamee;
+    var CourrierComName=req.body.CourrierComName;
+
+    console.log("Printing Country Name "+getCountryName +"And Courrier Name "+CourrierComName);
+   
+
+var k=0;
+    
+Request.find({'requestQueue':false,'shiperOrshippingTo.country1':getCountryName}).then(function(results){
+  
+   
+  
+    //console.log("Printing Results ids  "+results[0]._id);
+    for(k=0;k<results.length;k++){
+      Request.updateOne({_id:results[k]._id},{courriercomname:CourrierComName}).then(function(resultss){
+       console.log("Updating "+k+resultss);
+     });
+         
+      //console.log("Printing Results ids  "+results[k]._id);
+    }
+
+
+    res.redirect('/requests');
+    
+  
+   //console.log("Printing Results "+reqs);
+   //res.redirect('/requests');
+   });
+   
+   // res.redirect('/requests');
+   
+     };
+
+
 module.exports={
     authCheck,
     requestPage,
-    SendToOnProcess
+    SendToOnProcess,
+    SetCourrierName
 }

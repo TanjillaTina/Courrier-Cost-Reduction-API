@@ -48,7 +48,8 @@ let requestSchema=new Schema({
     done:{ type: Boolean ,default:false}, 
     shiperOrshippingTo:[shiperOrshippingToSchema],
     conignee:[conigneeSchema],
-    reqDetail:[reqDetailSchema]
+    reqDetail:[reqDetailSchema],
+    courriercomname:{type: String,default:""}
 
 });
 
