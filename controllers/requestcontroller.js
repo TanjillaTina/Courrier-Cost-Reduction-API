@@ -87,26 +87,23 @@ var k=0;
     
 Request.find({'requestQueue':false,'shiperOrshippingTo.country1':getCountryName}).then(function(results){
   
-   
-  
-    //console.log("Printing Results ids  "+results[0]._id);
+ 
     for(k=0;k<results.length;k++){
       Request.updateOne({_id:results[k]._id},{courriercomname:CourrierComName}).then(function(resultss){
        console.log("Updating "+k+resultss);
      });
          
-      //console.log("Printing Results ids  "+results[k]._id);
+
     }
 
 
     res.redirect('/requests');
     
   
-   //console.log("Printing Results "+reqs);
-   //res.redirect('/requests');
+
    });
    
-   // res.redirect('/requests');
+ 
    
      };
 
@@ -131,21 +128,13 @@ datao=datao+"  "+'\t'+"  "+'\t'+" Shipper "+'\t'+"  "+'\t'+"  "+'\t'+"  "+'\t'+
 datao=datao+" Contact Person "+'\t'+" Contact Person Number "+'\t'+" Company Name "+'\t'+" Company Address "+'\t'+" City "+'\t'+" Country "+'\t'+
         "  "+'\t'+"  "+'\t'+" "+'\t'+
         " Contact Person "+'\t'+" Contact Person Number "+'\t'+" Company Name "+'\t'+" Company Address "+'\t'+" City "+'\t'+" Country "+'\n';
-      //results[k].reqDate+
-
-      /*data=data+resultss[k].reqDate+'\t'
-                 +resultss[k].comname+'\t'
-                 +resultss[k].usermail+'\t';
-
-      */
+     
       var ConnName=req.body.ConnName;
       console.log("Printing Country Name from excell "+ConnName);
-      //res.redirect('/requests');
+
     
       Request.find({'requestQueue':false,'shiperOrshippingTo.country1':ConnName}).then(function(results){
-  
- //  console.log("Printing Found Matched Results "+results);
-  //console.log("Result Length "+results.length);
+
 
 
         for(k=0;k<results.length;k++){
@@ -165,53 +154,69 @@ datao=datao+" Contact Person "+'\t'+" Contact Person Number "+'\t'+" Company Nam
               results[k].conignee[0].cpname2+'\t'+results[k].conignee[0].cpnum2+'\t'+results[k].conignee[0].comname2+'\t'+results[k].conignee[0].comadd2+'\t'+results[k].conignee[0].city2+'\t'+results[k].conignee[0].country2+'\n';
           }
   
-         // console.log("Printing Result No "+k+" data is "+results[k]);
-         //console.log("Printing Dtai "+k+" here "+datai);
-        // console.log("Printing Dtao "+k+" here "+datao);
   
       }
 
   
+ 
+
+//updating Documents
+
+      for(l=0;l<results.length;l++){
+
+        Request.updateOne({_id:results[l]._id},{requestQueue:true}).then(function(resultss){
+        
       
-    for(l=0;l<results.length;l++){
-
-      Request.updateOne({_id:results[l]._id},{requestQueue:true}).then(function(resultss){
-      
-
-       console.log("Updating "+l+resultss);
-     });
-      
-    }
+         console.log("Updating "+l+resultss);
+       });
+        
+      }
 
 
 
-
-   
 
 
  
 
     ////preparing the excell sheet
     var data=datai+datao;
-    //console.log("Final InBound Data "+datai);
-    //console.log("Final OutBound Data "+datao);
+
  var filename=ConnName+'.xls';
 fs.appendFile(filename, data, (err) => {
     if (err) throw err;
     console.log('File created');
  });
-  //////////
+
+  //////////downloading the excell file
+  
+  var fileLocation = path.join('./',filename);
+  console.log(fileLocation);
+  res.download(fileLocation, filename);
+
+  //res.redirect('/requests');
+
+//router.post('/DownloadExcell2',RequestController.DownloadExcell2,RequestController.requestPage);
+//res.redirect('/requests/DownloadExcell2');
+//next();
+
     
-    
-        res.redirect('/requests');
+location.reload();   
         
       
        //console.log("Printing Results "+reqs);
-       //res.redirect('/requests');
+      // res.redirect('/requests');
        });
 
 
 
+
+     };
+
+
+
+     var DownloadExcell2=(req,res)=>{
+
+res.redirect('/requests');
 
      };
 module.exports={
@@ -219,5 +224,6 @@ module.exports={
     requestPage,
     SendToOnProcess,
     SetCourrierName,
-    DownloadExcell
+    DownloadExcell,
+    DownloadExcell2
 }

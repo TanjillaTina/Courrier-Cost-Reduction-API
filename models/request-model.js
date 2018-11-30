@@ -34,22 +34,32 @@ let reqDetailSchema=new Schema({
 });
 
 let requestSchema=new Schema({
+    //user info
     userId:{ type: String ,required:true},
     usermail:{type:String,required:true},
+    //request date
     reqDay:{ type: String ,required:true},
     reqDate:{ type: String ,required:true},
-    comname:{type: String,required:false},  
-    estemWeight:{type: String,required:false},
-    reqtype:{type: String,required:false},
-    boxSize:{type: String,required:false},
-    cost:{type: String,required:false},
-    requestQueue:{ type: Boolean ,default:false},
-    onprocessingQueue:{ type: Boolean ,default:false},
-    done:{ type: Boolean ,default:false}, 
+    //company name 
+    comname:{type: String,required:false},
+    //request detail
     shiperOrshippingTo:[shiperOrshippingToSchema],
     conignee:[conigneeSchema],
     reqDetail:[reqDetailSchema],
-    courriercomname:{type: String,default:""}
+    //////////inner boundaries for request queue
+    courriercomname:{type: String,default:""},
+    downloadex:{ type: Boolean ,default:false},
+    requestQueue:{ type: Boolean ,default:false},
+    ///////////////inner boundaries for on processing queue
+    estemWeight:{type: String,required:false},
+    boxSize:{type: String,required:false},
+    cost:{type: String,required:false},
+    onprocessingQueue:{ type: Boolean ,default:false},
+
+    ////
+    done:{ type: Boolean ,default:false}
+    
+    
 
 });
 
