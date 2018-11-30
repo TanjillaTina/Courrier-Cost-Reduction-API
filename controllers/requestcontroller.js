@@ -56,8 +56,6 @@ conignee: { $size: 1 } , 'requestQueue':false
 
  //res.redirect('/requests');
 
-
-
  Request.findById(requesstId, function(err, usera) {
     usera.set(usera.requestQueue=!usera.requestQueue);
   
@@ -111,9 +109,44 @@ Request.find({'requestQueue':false,'shiperOrshippingTo.country1':getCountryName}
      };
 
 
+
+     var DownloadExcell=(req,res)=>{
+
+      var ConnName=req.body.ConnName;
+      console.log("Printing Country Name from excell "+ConnName);
+      res.redirect('/requests');
+    
+      Request.find({'requestQueue':false,'shiperOrshippingTo.country1':ConnName}).then(function(results){
+  
+   
+  
+      
+    for(k=0;k<results.length;k++){
+      Request.updateOne({_id:results[k]._id},{requestQueue:true}).then(function(resultss){
+
+        
+       console.log("Updating "+k+resultss);
+     });
+         
+
+    }
+    
+    
+        res.redirect('/requests');
+        
+      
+       //console.log("Printing Results "+reqs);
+       //res.redirect('/requests');
+       });
+
+
+
+
+     };
 module.exports={
     authCheck,
     requestPage,
     SendToOnProcess,
-    SetCourrierName
+    SetCourrierName,
+    DownloadExcell
 }
