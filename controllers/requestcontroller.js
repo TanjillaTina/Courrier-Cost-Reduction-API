@@ -3,6 +3,8 @@ var express = require('express');
 const passport=require('passport');
 var Request=require('../models/request-model');
 var User=require('../models/user-model');
+var fs = require('fs');
+var path = require('path');
 //auth login
 
 var authCheck=(req,res,next)=>{
@@ -111,25 +113,94 @@ Request.find({'requestQueue':false,'shiperOrshippingTo.country1':getCountryName}
 
 
      var DownloadExcell=(req,res)=>{
+var datai=" InBound Requests "+'\n';
+datai=datai+"  "+'\t'+"  "+'\t'+" Shipping From "+'\t'+"  "+'\t'+"  "+'\t'+"  "+'\t'+
+               "  "+'\t'+"  "+'\t'+"  "+'\t'
+           +"  "+'\t'+"  "+'\t'+" Cosignee "+'\t'+"  "+'\t'+"  "+'\t'+"  "+'\n';
 
+datai=datai+" Contact Person "+'\t'+" Contact Person Number "+'\t'+" Company Name "+'\t'+" Company Address "+'\t'+" City "+'\t'+" Country "+'\t'+
+            "  "+'\t'+"  "+'\t'+" "+'\t'+
+        " Contact Person "+'\t'+" Contact Person Number "+'\t'+" Company Name "+'\t'+" Company Address "+'\t'+" City "+'\t'+" Country "+'\n';
+
+
+var datao="   OutBound Requests   "+'\n';
+datao=datao+"  "+'\t'+"  "+'\t'+" Shipper "+'\t'+"  "+'\t'+"  "+'\t'+"  "+'\t'+
+            "  "+'\t'+"  "+'\t'+"  "+'\t'
+            +"  "+'\t'+"  "+'\t'+" Cosignee "+'\t'+"  "+'\t'+"  "+'\t'+"  "+'\n';
+        
+datao=datao+" Contact Person "+'\t'+" Contact Person Number "+'\t'+" Company Name "+'\t'+" Company Address "+'\t'+" City "+'\t'+" Country "+'\t'+
+        "  "+'\t'+"  "+'\t'+" "+'\t'+
+        " Contact Person "+'\t'+" Contact Person Number "+'\t'+" Company Name "+'\t'+" Company Address "+'\t'+" City "+'\t'+" Country "+'\n';
+      //results[k].reqDate+
+
+      /*data=data+resultss[k].reqDate+'\t'
+                 +resultss[k].comname+'\t'
+                 +resultss[k].usermail+'\t';
+
+      */
       var ConnName=req.body.ConnName;
       console.log("Printing Country Name from excell "+ConnName);
-      res.redirect('/requests');
+      //res.redirect('/requests');
     
       Request.find({'requestQueue':false,'shiperOrshippingTo.country1':ConnName}).then(function(results){
   
-   
+ //  console.log("Printing Found Matched Results "+results);
+  //console.log("Result Length "+results.length);
+
+
+        for(k=0;k<results.length;k++){
+
+      
+          if(results[k].reqtype=='INBOUND'){
+      
+            datai=datai+results[k].shiperOrshippingTo[0].cpname1+'\t'+results[k].shiperOrshippingTo[0].cpnum1+'\t'+results[k].shiperOrshippingTo[0].comname1+'\t'+results[k].shiperOrshippingTo[0].comadd1+'\t'+results[k].shiperOrshippingTo[0].city1+'\t'+results[k].shiperOrshippingTo[0].country1+'\t'+
+              "  "+'\t'+"  "+'\t'+" "+'\t'+
+              results[k].conignee[0].cpname2+'\t'+results[k].conignee[0].cpnum2+'\t'+results[k].conignee[0].comname2+'\t'+results[k].conignee[0].comadd2+'\t'+results[k].conignee[0].city2+'\t'+results[k].conignee[0].country2+'\n';
+          }
+  
+          if(results[k].reqtype=='OUTBOUND'){
+      
+            datao=datao+results[k].shiperOrshippingTo[0].cpname1+'\t'+results[k].shiperOrshippingTo[0].cpnum1+'\t'+results[k].shiperOrshippingTo[0].comname1+'\t'+results[k].shiperOrshippingTo[0].comadd1+'\t'+results[k].shiperOrshippingTo[0].city1+'\t'+results[k].shiperOrshippingTo[0].country1+'\t'+
+              "  "+'\t'+"  "+'\t'+" "+'\t'+
+              results[k].conignee[0].cpname2+'\t'+results[k].conignee[0].cpnum2+'\t'+results[k].conignee[0].comname2+'\t'+results[k].conignee[0].comadd2+'\t'+results[k].conignee[0].city2+'\t'+results[k].conignee[0].country2+'\n';
+          }
+  
+         // console.log("Printing Result No "+k+" data is "+results[k]);
+         //console.log("Printing Dtai "+k+" here "+datai);
+        // console.log("Printing Dtao "+k+" here "+datao);
+  
+      }
+
   
       
-    for(k=0;k<results.length;k++){
-      Request.updateOne({_id:results[k]._id},{requestQueue:true}).then(function(resultss){
+    for(l=0;l<results.length;l++){
 
-        
-       console.log("Updating "+k+resultss);
+      Request.updateOne({_id:results[l]._id},{requestQueue:true}).then(function(resultss){
+      
+
+       console.log("Updating "+l+resultss);
      });
-         
-
+      
     }
+
+
+
+
+   
+
+
+ 
+
+    ////preparing the excell sheet
+    var data=datai+datao;
+    //console.log("Final InBound Data "+datai);
+    //console.log("Final OutBound Data "+datao);
+ var filename=ConnName+'.xls';
+fs.appendFile(filename, data, (err) => {
+    if (err) throw err;
+    console.log('File created');
+ });
+  //////////
     
     
         res.redirect('/requests');
