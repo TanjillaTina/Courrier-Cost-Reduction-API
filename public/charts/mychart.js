@@ -1,6 +1,6 @@
 const CHART=document.getElementById("lineChart");
-console.log(CHART);
-var datafile=require('./data');
+//console.log(CHART);
+
 
 let lineChart = new Chart(CHART, {
     type: 'line',
