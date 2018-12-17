@@ -30,34 +30,67 @@ let reqDetailSchema=new Schema({
     style:{type: String,required:false},
     article:{type: String,required:false},
     item:{type: String,required:false},
+    estemWeight:{type: String,required:false},
+});
+
+let userDetailSchema=new Schema({
+   //user info
+   userId:{ type: String ,required:true},
+   usermail:{type:String,required:true},
+   //request date
+   reqDate:{ type: String ,required:true},
 
 });
 
+let boxDetailSchema=new Schema({
+    weight:{type: String,required:false},
+    boxSize:{type: String,required:false},
+   // estemWeight:{type: String,required:false},
+});
+
 let requestSchema=new Schema({
-    //user info
-    userId:{ type: String ,required:true},
-    usermail:{type:String,required:true},
-    //request date
-    reqDay:{ type: String ,required:true},
-    reqDate:{ type: String ,required:true},
-    //company name 
-    comname:{type: String,required:false},
+    
+ 
+  
     //request detail
+    reqtype:{ type: String ,required:true},
+      //company name 
+    comname:{type: String,required:false},
     shiperOrshippingTo:[shiperOrshippingToSchema],
     conignee:[conigneeSchema],
     reqDetail:[reqDetailSchema],
+    userDetail:[userDetailSchema],
+    
     //////////inner boundaries for request queue
+    
+    downloadex:{ type: Boolean ,default:false}, //set after adding request# indicates unseen request
+    downloaddate:{type:String,default:""},
     courriercomname:{type: String,default:""},
-    downloadex:{ type: Boolean ,default:false},
-    requestQueue:{ type: Boolean ,default:false},
+    requestqueue:{ type: Boolean ,default:false}, //set to true after adding courrier com name
+
+
+
+    //////inner boundaries for process queue 
+
+    /////final done
+    finaldone:{ type: Boolean ,default:false},
+    ///////final done
+    //#### will be received from requestqueue==true and received==false
+    //processqueue:{ type: Boolean ,default:false},
+    received:{ type: Boolean ,default:false},
+    cost:{ type: Number, required:false},
+    receiveddate:{type:String,required:false},
+    receivedmonth:{type:String,required:false},
+    receivedyear:{type:String,required:false},
+    boxDetail:[boxDetailSchema],
     ///////////////inner boundaries for on processing queue
-    estemWeight:{type: String,required:false},
-    boxSize:{type: String,required:false},
-    cost:{type: String,required:false},
-    onprocessingQueue:{ type: Boolean ,default:false},
+    // estemWeight:{type: String,required:false},
+    // boxSize:{type: String,required:false},
+    // cost:{type: String,required:false},
+    // onprocessingQueue:{ type: Boolean ,default:false},
 
     ////
-    done:{ type: Boolean ,default:false}
+
     
     
 

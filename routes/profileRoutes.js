@@ -8,8 +8,8 @@ const ProfileController=require('../controllers/profile');
 
 
 router.get('/',ProfileController.authCheck,ProfileController.profilePage);
-router.get('/inBound',ProfileController.authCheck,ProfileController.inBound);
-router.get('/outBound',ProfileController.authCheck,ProfileController.outBound);
+// router.get('/inBound',ProfileController.authCheck,ProfileController.inBound);
+// router.get('/outBound',ProfileController.authCheck,ProfileController.outBound);
 router.post('/addreq',ProfileController.authCheck,ProfileController.addRequest);
 
 

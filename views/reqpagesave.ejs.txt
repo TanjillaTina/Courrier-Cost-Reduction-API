@@ -4,7 +4,7 @@
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>CourierCostReduction</title>
+        <title>CourrierCostReduction</title>
         <style>
             
         </style>
@@ -48,28 +48,44 @@
     <body>
           
       
-
+            <!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content blue-grey darken-3"style="color:#E0A905">
+    <li><a href="/auth/logout"><i class="material-icons">exit_to_app</i>Logout</a></li>
+    <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+    <li><a href="#!">two</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">three</a></li>
+  </ul>
    
       
 
         <div class="container-fluid fixed-top " style="background-color: #2d333a;">
            
-          <nav>
-            <div class="nav-wrapper blue-grey darken-3">
-              <a href="#!" class="brand-logo"style="padding-left:60px; color:white;"><i class="material-icons prefix"style="color:white;">all_inbox</i>Courier Cost Reduction</a>
-              <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html"><i class="material-icons left">search</i>Link with Left Icon</a></li>
-                <li><a href="/auth/logout"><i class="material-icons right">exit_to_app</i>Logout</a></li>
-              </ul>
 
-              <ul class="side-nav" id="mobile-demo">
-          
-                <li><a href="/auth/logout"><i class="material-icons">exit_to_app</i>Logout</a></li>
-             
-            </ul>
-            </div>
-          </nav>
   
+  <nav>
+
+
+      <div class="nav-wrapper blue-grey darken-3">
+      
+        <a href="#!" class="brand-logo"style="padding-left:60px; color:white;"><i class="material-icons prefix"style="color:white;">all_inbox</i>Courrier Cost Reduction</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          
+                  <!-- Dropdown Trigger -->
+                  <li><a class="dropdown-button" style="color:#E0A905;font:bolder;" href="#!" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i>Menu</a></li>
+         
+    
+
+        </ul>
+
+        <ul class="side-nav" id="mobile-demo">
+          
+            <li><a href="/auth/logout"><i class="material-icons">exit_to_app</i>Logout</a></li>
+         
+        </ul>
+      </div>
+    </nav>
 
             </div>
             <!-- Fixed Top Menu div ends here -->
@@ -109,10 +125,6 @@
                                 <div class="header">
                                     
                                     <h4 class="text-header">Welcome <%= user.username %></h4>
-                                    <div class="progress">
-                                        <div class="indeterminate"></div>
-                                    </div>
-                                          
                                   </div>
     
                                   <% if(mesg.error_msg) { %>

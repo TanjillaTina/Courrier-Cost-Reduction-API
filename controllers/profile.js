@@ -1,5 +1,4 @@
 var express = require('express');
-var RequestStatus="INBOUND";
 var UserModel=require('../models/user-model');
 var Request=require('../models/request-model');
 var Country=require('../models/countries');
@@ -9,7 +8,7 @@ var InCountry=require('../models/inserted-countries');
 var authCheck=(req,res,next)=>{
     if(!req.user){
       //if user isn't logged in 
-      req.flash('error_msg', 'You are not authorized to view that page');
+      req.flash('error_msg', 'You must login via office mail to view that page');
       res.redirect('/');
  
     }
@@ -29,47 +28,15 @@ Country.find({},null,{sort: {countryname: 1}}).then(function(results){
 }
 
 );
-res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa,mesg:req.flash()});
+res.render('profile',{user:user,//reqstat:RequestStatus,//
+  countriess:countriesa,mesg:req.flash()});
 
 });
 
 };
 
 
-  var outBound=(req,res)=>{
-    var user=req.user;
-    RequestStatus="OUTBOUND";      
-    //res.render('profile',{user:user,reqstat:RequestStatus});
-    
-    Country.find({},null,{sort: {countryname: 1}}).then(function(results){
-  
-      let countriesa=results.filter((results)=>{
-        return results;   
-    }
-    
-    );
-    res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa,mesg:req.flash()});
-    
-    });
 
-    };
-
-    var inBound=(req,res)=>{
-      var user=req.user;
-      RequestStatus="INBOUND";   
-  
-      Country.find({},null,{sort: {countryname: 1}}).then(function(results){
-  
-        let countriesa=results.filter((results)=>{
-          return results;   
-      }
-      
-      );
-      res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa,mesg:req.flash()});
-      
-      });
-  
-      };
 
 
       var addRequest=(req,res)=>{
@@ -83,15 +50,9 @@ res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa,mesg
         
 
             let request=new Request({
-              userId:user._id,
-              usermail:user.email,
-              reqDay:d.getDay(),
-              reqDate:da,
+              reqtype:req.body.reqType,
               comname:user.comname,
-              estemWeight:req.body.estemWeight,
-              reqtype:req.body.reqType
-              
-              
+               
             });
 
             request.save().then((result)=>{
@@ -120,9 +81,15 @@ res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa,mesg
                 orderNumber:req.body.orderNumber,
                 style:req.body.style,
                 article:req.body.article,
-                item:req.body.item
+                item:req.body.item,
+                estemWeight:req.body.estemWeight
               });
-
+              result.userDetail.push({
+                userId:user._id,
+                usermail:user.email,
+                //request date
+                reqDate:da
+              });
 
 
               result.save();
@@ -140,10 +107,7 @@ res.render('profile',{user:user,reqstat:RequestStatus,countriess:countriesa,mesg
  module.exports = {
   authCheck,
   profilePage,
-  inBound,
-  outBound,
   addRequest
-
-  
+ 
   };
 

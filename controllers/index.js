@@ -6,36 +6,28 @@ var express = require('express');
 
 var indexPage= (req, res)=> {
 
-// var myInterface = readline.createInterface({
-//   input: fs.createReadStream('./confiles/countries.txt')
-// });
-
-// var lineno = 0;
-// myInterface.on('line', (line)=> {
-//   lineno++;
-//  // console.log('Line number ' + lineno + ': ' + line);
-// //   new Country({
-                 
-// //     countryname:String(line)
-
-// // }).save().then((newCountry=>{
-// //     console.log('newCountry Created '+newCountry);
-// //     //res.render('/');
-
-// //     //again serializing
-
-// //      done(null,newCountry);
-// // }));
-
-// }
-// );
 
 
     res.render('index', { user: req.user,mesg:req.flash()});
   };
-  
+
+  var viewChart=(req,res)=>{
+
+    var year=req.body.selectyear;
+    if(!year){
+      req.flash('error_msg', 'You must select a year to view that page');
+      res.redirect('/');
+    }
+    else{
+ 
+      res.render('indexchart',{year:year});
+      
+    }
+   
+  };
 module.exports = {
-    indexPage
+    indexPage,
+    viewChart
     };
   
   
