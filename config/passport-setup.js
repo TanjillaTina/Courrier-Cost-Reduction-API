@@ -25,7 +25,7 @@ passport.deserializeUser((id,done)=>{
 passport.use(new OutlookStrategy({
             clientID: keys.outlook.clientID,
             clientSecret: keys.outlook.clientSecret,
-            callbackURL: '/auth/outlook/callback'
+            callbackURL: 'https://blooming-temple-53670.herokuapp.com/auth/outlook/callback'
           },
           function(accessToken, refreshToken, profile, done) {
             // console.log("Callback Function Fired from outlokk"+JSON.stringify(profile));
